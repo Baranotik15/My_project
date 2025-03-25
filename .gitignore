@@ -1,0 +1,36 @@
+# Игнорируем файлы среды Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Игнорируем настройки IDE
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Игнорируем файлы ОС
+.DS_Store
+Thumbs.db
+
+# Игнорируем файлы базы данных
+db.sqlite3
+*.sqlite3
+*.db
+
+
+# Игнорируем статические файлы, если они генерируются автоматически
+/staticfiles/
+/media/
+
+# Игнорируем файлы логов
+logs/
+*.log
+
+# Игнорируем файлы окружения и конфигурации
+.env
+.env.local
+.env.*.json
+*.pem
+*.key
