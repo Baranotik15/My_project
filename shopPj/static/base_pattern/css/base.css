@@ -9,6 +9,7 @@ body {
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    padding-top: 160px; /* Increased to account for hud + menu-table height */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -85,10 +86,19 @@ button:hover {
     margin: 0 20px;
 }
 
+.menu-table-container {
+    position: fixed;
+    top: 80px; /* Positioned right below the .hud */
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 999; /* Slightly lower than hud to ensure layering */
+    margin-top: 0; /* Remove the original margin */
+}
+
 .menu-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 80px;
     text-align: center;
 }
 
@@ -107,6 +117,15 @@ button:hover {
 
 .menu-table th:hover {
     background-color: #555555;
+}
+
+.menu-table a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.menu-table a:hover {
+    color: #f0f0f0;
 }
 
 h1 {
