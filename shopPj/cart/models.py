@@ -2,11 +2,17 @@ from django.db import models
 from django.conf import settings
 from products.models import Product
 
-# НЕ уверен не должна ли эта переходная таблица создаваться автоматически
+
 class Cart(models.Model):
-    # id
-    # user_id
-    pass
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"Cart of {self.user.username}"
 
 
 class CartItem(models.Model):
