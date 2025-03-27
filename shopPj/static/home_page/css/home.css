@@ -1,0 +1,123 @@
+.mail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.mail-left img {
+    width:  60px;
+    height: auto;
+}
+
+.mail-center {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.mail-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.mail-right {
+    display: flex;
+    align-items: center;
+}
+
+.mail-form {
+    display: flex;
+    gap: 8px;
+}
+
+.mail-input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 200px;
+}
+
+.mail-button {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.mail-button:hover {
+    background: #e63946;
+}
+
+.catalog-container {
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+}
+
+.phones-block, .socials-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 250px;
+}
+
+.phone-item, .social-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  width: 100%;
+  height: 80px;
+  justify-content: flex-start;
+}
+
+.phone-item:hover, .social-item:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+.phone-item img, .social-item img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.phone-item span, .social-item span {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  text-align: center;
+}
+
+.social-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.social-item a:hover span {
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .catalog-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+}

@@ -1,4 +1,76 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
+
+  <h1> Каталог </h1>
+
+  <ul>
+    {% for category in categories %}
+      <li>{{ category.name }}</li>
+    {% empty %}
+      <li>Empty</li>
+    {% endfor %}
+  </ul>
+
+  <div class="mail">
+    <div class="mail-left">
+      <img src="{% static 'home_page/img/gmail.png' %}" alt="Подпишитесь на рассылку">
+    </div>
+
+    <div class="mail-center">
+      <div class="mail-text">
+        ПОДПИШИТЕСЬ НА РАССЫЛКУ НОВОСТЕЙ И СКИДОК
+      </div>
+    </div>
+
+    <div class="mail-right">
+      <form method="post" class="mail-form">
+        <input type="email" placeholder="Ваш E-mail" class="mail-input">
+        <button type="submit" class="mail-button">Подписаться</button>
+      </form>
+    </div>
+  </div>
+
+
+  <h1>Наши контакты</h1>
+  <br>
+  <br>
+  <div class="catalog-container">
+    <div class="phones-block">
+      <div class="phone-item">
+        <img src="{% static 'home_page/img/phone.png' %}" alt="Phone Icon">
+        <span>+380 97 654 3210</span>
+      </div>
+      <div class="phone-item">
+        <img src="{% static 'home_page/img/phone.png' %}" alt="Phone Icon">
+        <span>+380 63 987 6543</span>
+      </div>
+      <div class="phone-item">
+        <img src="{% static 'home_page/img/phone.png' %}" alt="Phone Icon">
+        <span>+380 50 123 4567</span>
+      </div>
+    </div>
+
+    <div class="socials-block">
+      <div class="social-item">
+        <a href="" target="_blank">
+          <img src="{% static 'home_page/img/instagram.png' %}" alt="Instagram Icon">
+          <span>Instagram</span>
+        </a>
+      </div>
+      <div class="social-item">
+        <a href="" target="_blank">
+          <img src="{% static 'home_page/img/Telegram.png' %}" alt="Telegram Icon">
+          <span>Telegram</span>
+        </a>
+      </div>
+      <div class="social-item">
+        <a href="" target="_blank">
+          <img src="{% static 'home_page/img/tiktok.png' %}" alt="TikTok Icon">
+          <span>TikTok</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}
