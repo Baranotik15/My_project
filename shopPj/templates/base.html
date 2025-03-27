@@ -6,56 +6,40 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'base_pattern/css/base.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'home_page/css/home.css' %}">
-
 </head>
 <body>
-
   <header>
+
     <div class="hud">
       <a href="#">
         <img src="{% static 'base_pattern/img/menu.png' %}" alt="Меню" class="icon">
       </a>
-
       <a href="#">
-        <img src="{% static 'base_pattern/img/new.png' %}" alt="Новинки" class="icon">
+        <img src="{% static 'base_pattern/img/profil.png' %}" alt="Профиль" class="icon">
       </a>
-
       <span class="site-name">ScissorS</span>
-
       <a href="#">
         <img src="{% static 'base_pattern/img/like.png' %}" alt="Отслеживаемое" class="icon">
       </a>
-
       <a href="#">
         <img src="{% static 'base_pattern/img/cart.png' %}" alt="Корзина" class="icon">
       </a>
     </div>
 
-    <table class="menu-table">
-      <tr>
-        <th>
-          <a href="">Акции</a>
-        </th>
-
-        <th>
-          <a href="">Топы Продаж</a>
-        </th>
-
-        <th>
-          <a href="">Коллекции</a>
-        </th>
-
-        <th>
-          <a href="">О нас</a>
-        </th>
-      </tr>
-    </table>
+    <div class="menu-table-container">
+      <table class="menu-table">
+        <tr>
+          <th><a href="">Акции</a></th>
+          <th><a href="">Топы Продаж</a></th>
+          <th><a href="">Коллекции</a></th>
+          <th><a href="">О нас</a></th>
+        </tr>
+      </table>
+    </div>
   </header>
-
 
   <div class="content">
     {% block content %} {% endblock %}
   </div>
-
 </body>
 </html>
