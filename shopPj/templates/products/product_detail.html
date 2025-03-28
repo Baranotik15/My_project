@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="product-container">
+  <h1 class="product-title">{{ products_detail.name }}</h1>
+  <div class="product-image">
+    <img src="{{ products_detail.image.url }}" alt="{{ products_detail.name }}">
+  </div>
+  <p class="product-price">Цена: {{ products_detail.price }}₴</p>
+  <p class="product-description">Описание: {{ products_detail.description }}</p>
+
+  <div class="buttons">
+    <a href="#" class="btn btn-buy">Купить</a>
+    <a href="#" class="btn btn-fav">Добавить в избранное</a>
+  </div>
+
+  <a href="{% url 'product_list' products_detail.category.id %}" class="back-link">← Назад к категории</a>
+</div>
+
+{% endblock %}
