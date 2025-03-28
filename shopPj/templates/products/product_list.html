@@ -2,7 +2,6 @@
 {% load static %}
 {% block content %}
 
-  <!--Need fix them don't work with different registers-->
   <div class="search-form-container">
     <form method="get" action="{% url 'product_list' category_id=category.id %}">
       <input type="text" name="search" placeholder="Поиск по названию товара" value="{{ search_query }}">
@@ -11,18 +10,19 @@
   </div>
 
   <div class="products">
-    <br>
-    <br>
     {% for product in products %}
       <a href="{% url 'product_detail' product.pk %}">
         <div class="product-item">
           <div class="product-image">
-            <!-- Need to update -->
-            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% if product.image %}
+              <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+              <p>Изображение отсутствует</p>
+            {% endif %}
           </div>
           <div class="product-info">
-              <div class="product-name">{{ product.name }}</div>
-              <div class="product-price">{{ product.price }}₴</div>
+            <div class="product-name">{{ product.name }}</div>
+            <div class="product-price">{{ product.price }}₴</div>
           </div>
         </div>
       </a>
