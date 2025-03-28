@@ -238,3 +238,17 @@ button:hover {
     margin-bottom: 150px;
   }
 }
+
+button.full-th-link {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+button.full-th-link:hover {
+  background: none;
+  color: inherit;
+}

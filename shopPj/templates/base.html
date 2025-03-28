@@ -9,40 +9,50 @@
   <link rel="stylesheet" href="{% static 'about_page/css/about.css' %}">
   <link rel="stylesheet" href="{% static 'product/css/product_list.css' %}">
   <link rel="stylesheet" href="{% static 'product/css/product_detail.css' %}">
+  <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
 </head>
 <body>
-  <header>
+<header>
 
-    <div class="hud">
-      <a href="{% url "main_page" %}">
-        <img src="{% static 'base_pattern/img/menu.png' %}" alt="Меню" class="icon">
-      </a>
-      <a href="#">
-        <img src="{% static 'base_pattern/img/profil.png' %}" alt="Профиль" class="icon">
-      </a>
-      <span class="site-name">ScissorS</span>
-      <a href="#">
-        <img src="{% static 'base_pattern/img/like.png' %}" alt="Отслеживаемое" class="icon">
-      </a>
-      <a href="#">
-        <img src="{% static 'base_pattern/img/cart.png' %}" alt="Корзина" class="icon">
-      </a>
-    </div>
-
-    <div class="menu-table-container">
-      <table class="menu-table">
-        <tr>
-          <th><a href="" class="full-th-link">Акции</a></th>
-          <th><a href="" class="full-th-link">Топы Продаж</a></th>
-          <th><a href="" class="full-th-link">Коллекции</a></th>
-          <th><a href="{% url "about" %}" class="full-th-link">О нас</a></th>
-        </tr>
-      </table>
-    </div>
-  </header>
-
-  <div class="content">
-    {% block content %} {% endblock %}
+  <div class="hud">
+    <a href="{% url "main_page" %}">
+      <img src="{% static 'base_pattern/img/menu.png' %}" alt="Меню" class="icon">
+    </a>
+    <a href="#">
+      <img src="{% static 'base_pattern/img/profil.png' %}" alt="Профиль" class="icon">
+    </a>
+    <span class="site-name">ScissorS</span>
+    <a href="#">
+      <img src="{% static 'base_pattern/img/like.png' %}" alt="Отслеживаемое" class="icon">
+    </a>
+    <a href="#">
+      <img src="{% static 'base_pattern/img/cart.png' %}" alt="Корзина" class="icon">
+    </a>
   </div>
+
+  <div class="menu-table-container">
+    <table class="menu-table">
+      <tr>
+        <th><a href="" class="full-th-link">Акции</a></th>
+        <th><a href="" class="full-th-link">Топы Продаж</a></th>
+        <th><a href="{% url "about" %}" class="full-th-link">О нас</a></th>
+        {% if user.is_authenticated %}
+          <th>
+            <form method="post" action="{% url 'logout' %}" style="display: inline;">
+              {% csrf_token %}
+              <button type="submit" class="full-th-link">Выйти</button>
+            </form>
+          </th>
+        {% else %}
+          <th><a href="{% url 'login' %}" class="full-th-link">Войти</a></th>
+        {% endif %}
+      </tr>
+    </table>
+  </div>
+</header>
+
+<div class="content">
+  {% block content %} {% endblock %}
+</div>
 </body>
 </html>
