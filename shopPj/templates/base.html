@@ -5,13 +5,15 @@
   <title>Scissors</title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'base_pattern/css/base.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'home_page/css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'home_page/css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'about_page/css/about.css' %}">
+  <link rel="stylesheet" href="{% static 'product/css/product_list.css' %}">
 </head>
 <body>
   <header>
 
     <div class="hud">
-      <a href="#">
+      <a href="{% url "main_page" %}">
         <img src="{% static 'base_pattern/img/menu.png' %}" alt="Меню" class="icon">
       </a>
       <a href="#">
@@ -29,10 +31,10 @@
     <div class="menu-table-container">
       <table class="menu-table">
         <tr>
-          <th><a href="">Акции</a></th>
-          <th><a href="">Топы Продаж</a></th>
-          <th><a href="">Коллекции</a></th>
-          <th><a href="">О нас</a></th>
+          <th><a href="" class="full-th-link">Акции</a></th>
+          <th><a href="" class="full-th-link">Топы Продаж</a></th>
+          <th><a href="" class="full-th-link">Коллекции</a></th>
+          <th><a href="{% url "about" %}" class="full-th-link">О нас</a></th>
         </tr>
       </table>
     </div>

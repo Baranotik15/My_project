@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="products">
+    <br>
+    <br>
+    {% for product in products %}
+      <a href="">
+        <div class="product-item">
+          <div class="product-image">
+            <!-- Need to update -->
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+          </div>
+          <div class="product-info">
+              <div class="product-name">{{ product.name }}</div>
+              <div class="product-price">{{ product.price }}₴</div>
+          </div>
+        </div>
+      </a>
+    {% empty %}
+      <p>Товаров нет</p>
+    {% endfor %}
+  </div>
+
+{% endblock %}

@@ -1,61 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: scale(1.1);
+}
+
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 10%;
+  justify-content: flex-start;
+  flex-direction: row
+}
+
+.category-item {
+  width: 300px;
+  height: 400px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-image {
+  height: 320px;
+  background-color: #eee;
+}
+
+.category-name {
+  height: 80px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+@media (max-width: 1024px) {
+  .category-item {
+    width: 250px;
+    height: 350px;
+  }
+  .category-image {
+    height: 280px;
+  }
+  .category-name {
+    height: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-item {
+    width: 45%;
+    height: 300px;
+  }
+  .category-image {
+    height: 240px;
+  }
+  .category-name {
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-item {
+    width: 100%;
+    height: 250px;
+  }
+  .category-image {
+    height: 200px;
+  }
+  .category-name {
+    height: 50px;
+  }
+}
+
 .mail {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
 .mail-left img {
-    width:  60px;
-    height: auto;
+  width: 60px;
+  height: auto;
 }
 
 .mail-center {
-    flex-grow: 1;
-    text-align: center;
+  flex-grow: 1;
+  text-align: center;
 }
 
 .mail-text {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
 }
 
 .mail-right {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .mail-form {
-    display: flex;
-    gap: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 .mail-input {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 200px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 200px;
 }
 
 .mail-button {
-    background: #ff6b6b;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background 0.3s ease;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
 }
 
 .mail-button:hover {
-    background: #e63946;
+  background: #e63946;
 }
 
 .catalog-container {
@@ -76,7 +197,7 @@
 .phone-item, .social-item {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
   background-color: #f0f0f0;
   padding: 15px;
@@ -85,7 +206,6 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
   width: 100%;
   height: 80px;
-  justify-content: flex-start;
 }
 
 .phone-item:hover, .social-item:hover {
@@ -104,15 +224,10 @@
   font-weight: bold;
   font-family: 'Arial', sans-serif;
   color: #333;
-  text-align: center;
 }
 
 .social-item a {
   text-decoration: none;
-  color: inherit;
-}
-
-.social-item a:hover span {
   color: inherit;
 }
 

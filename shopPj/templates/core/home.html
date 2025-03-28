@@ -2,15 +2,24 @@
 {% load static %}
 {% block content %}
 
+  <br>
   <h1> Каталог </h1>
 
-  <ul>
+  <div class="category-container">
     {% for category in categories %}
-      <li>{{ category.name }}</li>
-    {% empty %}
-      <li>Empty</li>
+      <a href="{% url 'product_list' category_id=category.id %}" class="category-item-link">
+        <div class="category-item">
+          <div class="category-image">
+            <!-- Need to update -->
+            <img src="{{ category.image.url }}" alt="{{ product.name }}">
+          </div>
+          <div class="category-name">
+            {{ category.name }}
+          </div>
+        </div>
+      </a>
     {% endfor %}
-  </ul>
+  </div>
 
   <div class="mail">
     <div class="mail-left">
