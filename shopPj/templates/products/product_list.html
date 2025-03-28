@@ -6,7 +6,7 @@
     <br>
     <br>
     {% for product in products %}
-      <a href="">
+      <a href="{% url 'product_detail' product.pk %}">
         <div class="product-item">
           <div class="product-image">
             <!-- Need to update -->
