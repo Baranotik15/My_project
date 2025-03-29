@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{% static 'product/css/product_list.css' %}">
   <link rel="stylesheet" href="{% static 'product/css/product_detail.css' %}">
   <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+  <link rel="stylesheet" href="{% static 'cart/css/view_cart.css' %}">
 </head>
 <body>
 <header>
@@ -25,7 +26,7 @@
     <a href="{% url "favorites" %}">
       <img src="{% static 'base_pattern/img/like.png' %}" alt="Отслеживаемое" class="icon">
     </a>
-    <a href="#">
+    <a href="{% url "view_cart" %}">
       <img src="{% static 'base_pattern/img/cart.png' %}" alt="Корзина" class="icon">
     </a>
   </div>

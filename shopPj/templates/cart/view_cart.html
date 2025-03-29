@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% if not cart_items %}
+    <div class="empty-cart-container">
+      <p class="empty-cart-message">Ваша корзина пуста. Добавьте товары, чтобы начать покупки!</p>
+      <a href="{% url 'main_page' %}" class="btn-empty-cart">Перейти к покупкам</a>
+    </div>
+  {% else %}
+    <h2>Ваша корзина</h2>
+    <div class="cart-items">
+      {% for cart_item in cart_items %}
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <div class="cart-item-name">{{ cart_item.product.name }}</div>
+            <div class="cart-item-price">{{ cart_item.product.price }}₴</div>
+            <div class="cart-item-quantity">
+              <form action="{% url 'update_cart_item_quantity' cart_item.id 'decrease' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn-change-quantity">-</button>
+              </form>
+              {{ cart_item.quantity }}
+              <form action="{% url 'update_cart_item_quantity' cart_item.id 'increase' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn-change-quantity">+</button>
+              </form>
+            </div>
+          </div>
+          <div class="cart-item-actions">
+            <form action="{% url 'delete_cart_item' cart_item.pk %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn-delete">Удалить</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="cart-total">
+      <h3>Общая стоимость: {{ total_price }}₴</h3>
+    </div>
+
+    <div class="cart-buttons">
+      <a href="{% url 'main_page' %}" class="btn-checkout">Продолжить покупки</a>
+      <a href="#" class="btn-checkout">Перейти к оформлению</a>
+    </div>
+  {% endif %}
+
+{% endblock %}
