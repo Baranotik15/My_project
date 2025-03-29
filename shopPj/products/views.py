@@ -20,10 +20,10 @@ class ProductListView(ListView):
         if search_query:
             queryset = queryset.filter(name__icontains=search_query)
 
-        return queryset
+        return queryset # Не пойму почему не учитывает регистры вроде айконтейнс должен, но не рабоатет
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super(ProductListView, self).get_context_data(**kwargs)
         category_id = self.kwargs.get('category_id')
 
         if category_id:

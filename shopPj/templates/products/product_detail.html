@@ -12,7 +12,18 @@
 
   <div class="buttons">
     <a href="#" class="btn btn-buy">Купить</a>
-    <a href="#" class="btn btn-fav">Добавить в избранное</a>
+
+    {% if products_detail in request.user.favorite_products.all %}
+      <form action="{% url 'remove_from_favorites' product_id=products_detail.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-fav">Удалить из избранного</button>
+      </form>
+    {% else %}
+      <form action="{% url 'add_to_favorites' product_id=products_detail.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-fav">Добавить в избранное</button>
+      </form>
+    {% endif %}
   </div>
 
   <a href="{% url 'product_list' products_detail.category.id %}" class="back-link">← Назад к категории</a>

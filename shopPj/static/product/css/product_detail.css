@@ -8,11 +8,11 @@
 }
 
 .product-title {
-    font-family: 'Great Vibes', cursive; /* Соответствует h1 в основном стиле */
+    font-family: 'Great Vibes', cursive;
     color: #333333;
     font-size: 3em;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Как в h1 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
@@ -24,7 +24,7 @@
 
 .product-price {
     font-family: 'Arial', sans-serif;
-    font-size: 1.5em; /* Увеличиваем для акцента */
+    font-size: 1.5em;
     color: #333;
     margin-bottom: 15px;
     text-align: center;
@@ -92,7 +92,7 @@
     display: inline-block;
     margin-top: 20px;
     padding: 10px 15px;
-    background: #007bff; /* Синий цвет для контраста */
+    background: #007bff;
     color: #fff;
     border-radius: 5px;
     text-decoration: none;
@@ -100,5 +100,5 @@
 }
 
 .back-link:hover {
-    background: #0056b3; /* Темнее при наведении */
+    background: #0056b3;
 }
