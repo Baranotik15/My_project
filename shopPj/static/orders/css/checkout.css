@@ -1,0 +1,171 @@
+.order-form {
+  max-width: 400px;
+  margin: 50px 10%;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.form-field,
+.pickup-field,
+.delivery-field {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label,
+.pickup-field label,
+.delivery-field label {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  color: #333;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-field select,
+.form-field input[type="text"],
+.pickup-field input[type="text"],
+.delivery-field input[type="text"] {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  width: 100%;
+  background-color: #fafafa;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-field select:focus,
+.form-field input[type="text"]:focus,
+.pickup-field input[type="text"]:focus,
+.delivery-field input[type="text"]:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
+  outline: none;
+}
+
+.form-field select {
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  padding-right: 30px;
+}
+
+.pickup-field ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pickup-field li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pickup-field input[type="radio"] {
+  accent-color: #4CAF50;
+  width: 16px;
+  height: 16px;
+}
+
+.pickup-field label {
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: none;
+}
+
+.fields-container {
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s ease;
+}
+
+.order-form button {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-form button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .order-form {
+    max-width: 350px;
+    margin: 40px 10%;
+    padding: 20px;
+  }
+
+  .form-field select,
+  .form-field input[type="text"],
+  .pickup-field input[type="text"] {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .form-field label,
+  .pickup-field label,
+  .delivery-field label {
+    font-size: 13px;
+  }
+
+  .order-form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-form {
+    max-width: 100%;
+    margin: 30px 10%;
+    padding: 15px;
+  }
+
+  .pickup-field ul {
+    gap: 6px;
+  }
+
+  .form-field label,
+  .pickup-field label,
+  .delivery-field label {
+    font-size: 12px;
+  }
+
+  .form-field select,
+  .form-field input[type="text"],
+  .pickup-field input[type="text"] {
+    font-size: 12px;
+    padding: 7px;
+  }
+
+  .order-form button {
+    font-size: 13px;
+    padding: 8px;
+  }
+}
