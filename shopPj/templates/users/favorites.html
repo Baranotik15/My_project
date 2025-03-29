@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="products">
+    {% for product in favorites %}
+      <a href="{% url 'product_detail' product.pk %}">
+        <div class="product-item">
+          <div class="product-image">
+            {% if product.image %}
+              <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+              <p>Изображение отсутствует</p>
+            {% endif %}
+          </div>
+          <div class="product-info">
+            <div class="product-name">{{ product.name }}</div>
+            <div class="product-price">{{ product.price }}₴</div>
+          </div>
+
+          <form method="post" action="{% url 'remove_from_favorites' product.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-remove">Удалить из избранного</button>
+          </form>
+        </div>
+      </a>
+    {% empty %}
+      <p>В вашем списке избранных нет товаров.</p>
+    {% endfor %}
+  </div>
+
+{% endblock %}

@@ -1,5 +1,7 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
+from .views import FavoriteListView, AddToFavoritesView, RemoveFromFavoritesView
+
 
 urlpatterns = [
     path(
@@ -11,5 +13,20 @@ urlpatterns = [
         'logout/',
         LogoutView.as_view(next_page='main_page'),
         name='logout'
+    ),
+    path(
+        'favorites/',
+        FavoriteListView.as_view(),
+        name='favorites'
+    ),
+    path(
+        'product/<int:product_id>/add_to_favorites/'
+        , AddToFavoritesView.as_view(),
+        name='add_to_favorites'
+    ),
+    path(
+        'product/<int:product_id>/remove_from_favorites/',
+        RemoveFromFavoritesView.as_view(),
+        name='remove_from_favorites'
     ),
 ]
