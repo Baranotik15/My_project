@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <br>
+  <br>
+  <form method="post" id="order-form">
+    {% csrf_token %}
+
+    <div class="form-field">
+      <label for="id_delivery_method">Delivery Method:</label>
+      {{ form.delivery_method }}
+    </div>
+
+    <div id="pickup-fields" style="display:none;">
+      <div class="pickup-field">
+        <label for="id_pickup_address">Choose Store:</label>
+        {{ form.pickup_address }}
+      </div>
+      <div class="pickup-field">
+        <label for="id_full_name">Full Name:</label>
+        {{ form.full_name }}
+      </div>
+      <div class="pickup-field">
+        <label for="id_phone_number">Phone Number:</label>
+        {{ form.phone_number }}
+      </div>
+    </div>
+
+    <div id="delivery-fields" style="display:none;">
+      <div class="delivery-field">
+        <label for="id_delivery_address">Delivery Address:</label>
+        {{ form.delivery_address }}
+      </div>
+      <div class="delivery-field">
+        <label for="id_full_name">Full Name:</label>
+        {{ form.full_name }}
+      </div>
+      <div class="delivery-field">
+        <label for="id_phone_number">Phone Number:</label>
+        {{ form.phone_number }}
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="id_payment_method">Payment Method:</label>
+      {{ form.payment_method }}
+    </div>
+
+    <button type="submit">Оформить заказ</button>
+  </form>
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          const deliveryMethodField = document.querySelector('#id_delivery_method');
+          const pickupFields = document.getElementById('pickup-fields');
+          const deliveryFields = document.getElementById('delivery-fields');
+
+          function toggleFields() {
+              const deliveryMethod = deliveryMethodField.value;
+              if (deliveryMethod === 'Pickup') {
+                  pickupFields.style.display = 'block';
+                  deliveryFields.style.display = 'none';
+              } else if (deliveryMethod === 'Delivery') {
+                  pickupFields.style.display = 'none';
+                  deliveryFields.style.display = 'block';
+              }
+          }
+
+          deliveryMethodField.addEventListener('change', toggleFields);
+
+          toggleFields();
+      });
+  </script>
+{% endblock %}
