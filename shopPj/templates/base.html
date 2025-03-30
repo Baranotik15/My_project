@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{% static 'cart/css/view_cart.css' %}">
   <link rel="stylesheet" href="{% static 'orders/css/checkout.css' %}">
   <link rel="stylesheet" href="{% static "orders/css/order_success.css" %}">
+  <link rel="stylesheet" href="{% static "users/css/profile.css" %}">
 </head>
 <body>
 <header>
@@ -21,7 +22,7 @@
     <a href="{% url "main_page" %}">
       <img src="{% static 'base_pattern/img/menu.png' %}" alt="Меню" class="icon">
     </a>
-    <a href="#">
+    <a href="{% url "profile" %}">
       <img src="{% static 'base_pattern/img/profil.png' %}" alt="Профиль" class="icon">
     </a>
     <span class="site-name">ScissorS</span>
