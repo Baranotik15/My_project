@@ -4,15 +4,15 @@ from orders.models import Order
 
 class Payment(models.Model):
     class PaymentStatus(models.TextChoices):
-        PENDING = 'Pending', 'Pending'
-        CONFIRMED = 'Confirmed', 'Confirmed'
-        REJECTED = 'Rejected', 'Rejected'
+        PENDING = "Pending", "Pending"
+        CONFIRMED = "Confirmed", "Confirmed"
+        REJECTED = "Rejected", "Rejected"
 
     class PaymentMethod(models.TextChoices):
-        CARD = 'Card', 'Card'
-        PAYPAL = 'PayPal', 'PayPal'
-        BANK_TRANSFER = 'Bank Transfer', 'Bank Transfer'
-        CASH = 'Cash', 'Cash'
+        CARD = "Card", "Card"
+        PAYPAL = "PayPal", "PayPal"
+        BANK_TRANSFER = "Bank Transfer", "Bank Transfer"
+        CASH = "Cash", "Cash"
 
     order = models.ForeignKey(
         Order,

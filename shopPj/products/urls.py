@@ -3,13 +3,13 @@ from .views import ProductListView, ProductDetailView
 
 urlpatterns = [
     path(
-        'category/<int:category_id>/',
+        "category/<int:category_id>/",
         ProductListView.as_view(),
-        name='product_list'
+        name="product_list"
     ),
     path(
-        'product/<int:pk>/',
+        "product/<int:pk>/",
         ProductDetailView.as_view(),
-        name='product_detail'
-    )
+        name="product_detail"
+    ),
 ]

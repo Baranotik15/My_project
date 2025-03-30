@@ -6,14 +6,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('products', '0003_remove_product_favorites'),
-        ('users', '0001_initial'),
+        ("products", "0003_remove_product_favorites"),
+        ("users", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='user',
-            name='favorite_products',
-            field=models.ManyToManyField(blank=True, related_name='favorite_products', to='products.product'),
+            model_name="user",
+            name="favorite_products",
+            field=models.ManyToManyField(
+                blank=True, related_name="favorite_products", to="products.product"
+            ),
         ),
     ]
