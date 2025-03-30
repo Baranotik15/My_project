@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="order-success">
+    <div class="order-success__header">
+      <h2>Заказ успешно оформлен!</h2>
+      <p>Спасибо за ваш заказ, <span class="highlight">{{ request.user.username }}</span>!</p>
+      <p>Номер заказа: <span class="highlight">{{ order.id }}</span></p>
+    </div>
+
+    <div class="order-success__details">
+      <h3>Детали заказа</h3>
+      <ul class="order-items">
+        {% for item in order_items %}
+          <li>{{ item.product.name }} - {{ item.quantity }} шт. - {{ item.product.price }} грн</li>
+        {% endfor %}
+      </ul>
+      <p class="total-price"><strong>Итого:</strong> {{ total_price }} грн</p>
+    </div>
+
+    <div class="order-success__info">
+      <p><strong>Способ доставки:</strong> {{ order.delivery_method }}</p>
+      <p><strong>Способ оплаты:</strong> {{ order.payment_method }}</p>
+      {% if order.delivery_method == 'Delivery' %}
+        <p><strong>Адрес доставки:</strong> {{ order.delivery_address }}</p>
+      {% else %}
+        <p><strong>Магазин для самовывоза:</strong> {{ order.pickup_address }}</p>
+      {% endif %}
+      <p><strong>Имя:</strong> {{ order.full_name }}</p>
+      <p><strong>Телефон:</strong> {{ order.phone_number }}</p>
+    </div>
+
+    <a href="{% url 'main_page' %}" class="btn btn--primary">Вернуться на главную</a>
+  </div>
+{% endblock %}

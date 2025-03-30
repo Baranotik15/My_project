@@ -26,13 +26,13 @@ class OrderForm(forms.ModelForm):
         required=False,
         widget=forms.TextInput(
             attrs={
-            'placeholder': 'Enter delivery address'
+                'placeholder': 'Enter delivery address'
             }
         ),
     )
 
     phone_number = forms.CharField(
-        required=False,
+        required=True,  # Поле обязательно
         widget=forms.TextInput(
             attrs={
                 'placeholder': 'Enter phone number'
@@ -41,7 +41,7 @@ class OrderForm(forms.ModelForm):
     )
 
     full_name = forms.CharField(
-        required=False,
+        required=True,  # Поле обязательно
         widget=forms.TextInput(
             attrs={
                 'placeholder': 'Enter full name'
@@ -54,6 +54,7 @@ class OrderForm(forms.ModelForm):
         required=True,
         initial='Pickup',
     )
+
     payment_method = forms.ChoiceField(
         choices=PaymentChoices.choices,
         required=True,
@@ -80,18 +81,17 @@ class OrderForm(forms.ModelForm):
         delivery_method = cleaned_data.get('delivery_method')
         pickup_address = cleaned_data.get('pickup_address')
         delivery_address = cleaned_data.get('delivery_address')
-        phone_number = cleaned_data.get('phone_number')
-        full_name = cleaned_data.get('full_name')
-
-        if not phone_number:
-            self.add_error('phone_number', 'Phone number is required.')
-        if not full_name:
-            self.add_error('full_name', 'Full name is required.')
 
         if delivery_method == 'Delivery' and not delivery_address:
-            self.add_error('delivery_address', 'Delivery address is required.')
+            self.add_error(
+                'delivery_address',
+                'Delivery address is required.'
+            )
         if delivery_method == 'Pickup' and not pickup_address:
-            self.add_error('pickup_address', 'Please select a pickup store.')
+            self.add_error(
+                'pickup_address',
+                'Please select a pickup store.'
+            )
 
         return cleaned_data
 

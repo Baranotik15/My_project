@@ -1,74 +1,117 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <br>
-  <br>
-  <form method="post" id="order-form">
+  <form method="post" id="order-form" class="order-form" action="{% url 'checkout' %}">
     {% csrf_token %}
+
+    <div>
+      <h3>Отладка: form.errors</h3>
+      <pre>{{ form.errors|safe }}</pre>
+    </div>
+
+    {% if form.non_field_errors %}
+      <div class="form-errors">
+        <ul>
+          {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {% if form.errors %}
+      <div class="form-errors">
+        <h3>Ошибки формы:</h3>
+        <ul>
+          {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+              <li>{{ field }}: {{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
 
     <div class="form-field">
       <label for="id_delivery_method">Delivery Method:</label>
       {{ form.delivery_method }}
+      {% if form.delivery_method.errors %}
+        <div class="field-error">{{ form.delivery_method.errors }}</div>
+      {% endif %}
     </div>
 
-    <div id="pickup-fields" style="display:none;">
+    <div id="pickup-fields" class="fields-container" style="display:none;">
       <div class="pickup-field">
         <label for="id_pickup_address">Choose Store:</label>
         {{ form.pickup_address }}
-      </div>
-      <div class="pickup-field">
-        <label for="id_full_name">Full Name:</label>
-        {{ form.full_name }}
-      </div>
-      <div class="pickup-field">
-        <label for="id_phone_number">Phone Number:</label>
-        {{ form.phone_number }}
+        {% if form.pickup_address.errors %}
+          <div class="field-error">{{ form.pickup_address.errors }}</div>
+        {% endif %}
       </div>
     </div>
 
-    <div id="delivery-fields" style="display:none;">
+    <div id="delivery-fields" class="fields-container" style="display:none;">
       <div class="delivery-field">
         <label for="id_delivery_address">Delivery Address:</label>
         {{ form.delivery_address }}
+        {% if form.delivery_address.errors %}
+          <div class="field-error">{{ form.delivery_address.errors }}</div>
+        {% endif %}
       </div>
-      <div class="delivery-field">
-        <label for="id_full_name">Full Name:</label>
-        {{ form.full_name }}
-      </div>
-      <div class="delivery-field">
-        <label for="id_phone_number">Phone Number:</label>
-        {{ form.phone_number }}
-      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="id_full_name">Full Name:</label>
+      {{ form.full_name }}
+      {% if form.full_name.errors %}
+        <div class="field-error">{{ form.full_name.errors }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-field">
+      <label for="id_phone_number">Phone Number:</label>
+      {{ form.phone_number }}
+      {% if form.phone_number.errors %}
+        <div class="field-error">{{ form.phone_number.errors }}</div>
+      {% endif %}
     </div>
 
     <div class="form-field">
       <label for="id_payment_method">Payment Method:</label>
       {{ form.payment_method }}
+      {% if form.payment_method.errors %}
+        <div class="field-error">{{ form.payment_method.errors }}</div>
+      {% endif %}
     </div>
 
     <button type="submit">Оформить заказ</button>
   </form>
 
   <script>
-      document.addEventListener('DOMContentLoaded', function () {
-          const deliveryMethodField = document.querySelector('#id_delivery_method');
-          const pickupFields = document.getElementById('pickup-fields');
-          const deliveryFields = document.getElementById('delivery-fields');
+    document.addEventListener('DOMContentLoaded', function () {
+      const deliveryMethodField = document.querySelector('#id_delivery_method');
+      const pickupFields = document.getElementById('pickup-fields');
+      const deliveryFields = document.getElementById('delivery-fields');
+      const form = document.getElementById('order-form');
 
-          function toggleFields() {
-              const deliveryMethod = deliveryMethodField.value;
-              if (deliveryMethod === 'Pickup') {
-                  pickupFields.style.display = 'block';
-                  deliveryFields.style.display = 'none';
-              } else if (deliveryMethod === 'Delivery') {
-                  pickupFields.style.display = 'none';
-                  deliveryFields.style.display = 'block';
-              }
-          }
+      function toggleFields() {
+        const deliveryMethod = deliveryMethodField.value;
+        if (deliveryMethod === 'Pickup') {
+          pickupFields.style.display = 'block';
+          deliveryFields.style.display = 'none';
+        } else if (deliveryMethod === 'Delivery') {
+          pickupFields.style.display = 'none';
+          deliveryFields.style.display = 'block';
+        }
+      }
 
-          deliveryMethodField.addEventListener('change', toggleFields);
+      deliveryMethodField.addEventListener('change', toggleFields);
+      toggleFields();
 
-          toggleFields();
+      form.addEventListener('submit', function (event) {
+        console.log('Форма отправляется...');
+        console.log('Данные формы:', new FormData(form));
       });
+    });
   </script>
 {% endblock %}

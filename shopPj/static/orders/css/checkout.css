@@ -1,5 +1,5 @@
 .order-form {
-  max-width: 400px;
+  max-width: 1400px;
   margin: 50px 10%;
   padding: 25px;
   background-color: #ffffff;
@@ -168,4 +168,27 @@
     font-size: 13px;
     padding: 8px;
   }
+}
+
+.form-errors {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.form-errors ul {
+  list-style: none;
+  padding: 0;
+}
+
+.form-errors li {
+  margin-bottom: 5px;
+}
+
+.field-error {
+  color: #721c24;
+  font-size: 12px;
+  margin-top: 5px;
 }

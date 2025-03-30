@@ -22,6 +22,37 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    delivery_method = models.CharField(
+        max_length=20,
+        choices=[
+            ('Pickup', 'Pickup'),
+            ('Delivery', 'Delivery')
+        ],
+    )
+    payment_method = models.CharField(
+        max_length=20,
+        choices=[
+            ('credit_card', 'Credit Card'),
+            ('paypal', 'PayPal'),
+            ('in_cash', 'In Cash')
+        ],
+    )
+    delivery_address = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
+    )
+    pickup_address = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True
+    )
+    full_name = models.CharField(
+        max_length=100,
+    )
+    phone_number = models.CharField(
+        max_length=20,
+    )
 
     def get_total_price(self):
         annotated_order = Order.objects.filter(id=self.id).annotate(
