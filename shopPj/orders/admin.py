@@ -9,7 +9,7 @@ class OrderAdmin(admin.ModelAdmin):
         'id',
         'user',
         'status',
-        'total_price',
+        'total_price_display',
         'created_at',
     )
     list_filter = (
@@ -26,15 +26,16 @@ class OrderAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
         return queryset.annotate(
-            total_price=Sum(
+            _total_price=Sum(
                 F('order_items__quantity') * F('order_items__product__price')
             )
         )
 
-    def total_price(self, obj):
-        return obj.total_price or 0
+    def total_price_display(self, obj):
+        return obj._total_price or 0
 
-    total_price.admin_order_field = 'total_price'
+    total_price_display.short_description = 'Total Price'
+
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):

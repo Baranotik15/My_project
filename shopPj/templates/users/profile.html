@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="profile-container">
+    <div class="profile-info">
+      <h2>Профиль пользователя</h2>
+      <div class="profile-details">
+        <p><strong>Email:</strong> {{ user.email|default:"Не указан" }}</p>
+        <p><strong>Имя:</strong> {{ user.first_name|default:"Не указано" }}</p>
+        <p><strong>Фамилия:</strong> {{ user.last_name|default:"Не указана" }}</p>
+        <p><strong>Дата регистрации:</strong> {{ user.date_joined|date:"d.m.Y H:i" }}</p>
+      </div>
+    </div>
+
+    <div class="orders-section">
+      <h3>Ваши заказы</h3>
+      {% if orders %}
+        <div class="orders-list">
+          {% for order_data in orders %}
+            <div class="order-block">
+              <div class="order-header">
+                <h4>Заказ #{{ order_data.order.id }}</h4>
+                <p class="order-date">Дата: {{ order_data.order.created_at|date:"d.m.Y H:i" }}</p>
+                <p class="order-status">Статус: {{ order_data.order.status }}</p>
+              </div>
+              <div class="order-items">
+                <ul>
+                  {% for item in order_data.order_items %}
+                    <li>{{ item.product.name }} - {{ item.quantity }} шт. - {{ item.product.price }} грн</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="order-footer">
+                <p><strong>Итого:</strong> {{ order_data.total_price }} грн</p>
+                <p><strong>Способ доставки:</strong> {{ order_data.order.delivery_method }}</p>
+                {% if order_data.order.delivery_method == 'Delivery' %}
+                  <p><strong>Адрес доставки:</strong> {{ order_data.order.delivery_address }}</p>
+                {% else %}
+                  <p><strong>Магазин для самовывоза:</strong> {{ order_data.order.pickup_address }}</p>
+                {% endif %}
+                <p><strong>Способ оплаты:</strong> {{ order_data.order.payment_method }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="no-orders">У вас пока нет заказов.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
