@@ -7,23 +7,21 @@ from .models import User
 class CustomUserAdmin(UserAdmin):
     model = User
     list_display = (
-        'username',
-        'email',
-        'first_name',
-        'last_name',
-        'is_staff',
-        'is_active',
-        'date_joined',
+        "username",
+        "email",
+        "first_name",
+        "last_name",
+        "is_staff",
+        "is_active",
+        "date_joined",
     )
     list_filter = (
-        'is_staff',
-        'is_active',
-        'is_superuser',
+        "is_staff",
+        "is_active",
+        "is_superuser",
     )
     search_fields = (
-        'username',
-        'email',
+        "username",
+        "email",
     )
-    ordering = (
-        '-date_joined',
-    )
+    ordering = ("-date_joined",)

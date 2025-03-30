@@ -6,28 +6,37 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('orders', '0004_alter_order_full_name_alter_order_payment_method_and_more'),
+        ("orders", "0004_alter_order_full_name_alter_order_payment_method_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='order',
-            name='delivery_method',
-            field=models.CharField(choices=[('Pickup', 'Pickup'), ('Delivery', 'Delivery')], max_length=20),
+            model_name="order",
+            name="delivery_method",
+            field=models.CharField(
+                choices=[("Pickup", "Pickup"), ("Delivery", "Delivery")], max_length=20
+            ),
         ),
         migrations.AlterField(
-            model_name='order',
-            name='full_name',
+            model_name="order",
+            name="full_name",
             field=models.CharField(max_length=100),
         ),
         migrations.AlterField(
-            model_name='order',
-            name='payment_method',
-            field=models.CharField(choices=[('credit_card', 'Credit Card'), ('paypal', 'PayPal'), ('in_cash', 'In Cash')], max_length=20),
+            model_name="order",
+            name="payment_method",
+            field=models.CharField(
+                choices=[
+                    ("credit_card", "Credit Card"),
+                    ("paypal", "PayPal"),
+                    ("in_cash", "In Cash"),
+                ],
+                max_length=20,
+            ),
         ),
         migrations.AlterField(
-            model_name='order',
-            name='phone_number',
+            model_name="order",
+            name="phone_number",
             field=models.CharField(max_length=20),
         ),
     ]

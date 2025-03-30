@@ -3,13 +3,13 @@ from .views import CheckoutView, OrderSuccessView
 
 urlpatterns = [
     path(
-        'checkout/',
+        "checkout/",
         CheckoutView.as_view(),
-        name='checkout'
+        name="checkout"
     ),
     path(
-        'order-success/',
+        "order-success/",
         OrderSuccessView.as_view(),
-        name='order_success.css'
+        name="order_success.css"
     ),
 ]

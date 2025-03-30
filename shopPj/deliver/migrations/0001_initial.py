@@ -7,20 +7,58 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Deliver',
+            name="Deliver",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('deliver_method', models.CharField(choices=[('Courier', 'Courier'), ('Pickup', 'Pickup'), ('Postal Service', 'Postal Service')], default='Courier', max_length=15)),
-                ('tracking_number', models.CharField(blank=True, max_length=100, null=True)),
-                ('status', models.CharField(choices=[('Delivered', 'Delivered'), ('Undelivered', 'Undelivered')], default='Undelivered', max_length=15)),
-                ('address', models.CharField(max_length=120)),
-                ('start_time', models.DateTimeField(auto_now_add=True)),
-                ('finish_time', models.DateTimeField(blank=True, null=True, verbose_name='Time of delivery completion')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "deliver_method",
+                    models.CharField(
+                        choices=[
+                            ("Courier", "Courier"),
+                            ("Pickup", "Pickup"),
+                            ("Postal Service", "Postal Service"),
+                        ],
+                        default="Courier",
+                        max_length=15,
+                    ),
+                ),
+                (
+                    "tracking_number",
+                    models.CharField(blank=True, max_length=100, null=True),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("Delivered", "Delivered"),
+                            ("Undelivered", "Undelivered"),
+                        ],
+                        default="Undelivered",
+                        max_length=15,
+                    ),
+                ),
+                ("address", models.CharField(max_length=120)),
+                ("start_time", models.DateTimeField(auto_now_add=True)),
+                (
+                    "finish_time",
+                    models.DateTimeField(
+                        blank=True,
+                        null=True,
+                        verbose_name="Time of delivery completion",
+                    ),
+                ),
             ],
         ),
     ]

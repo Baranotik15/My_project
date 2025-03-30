@@ -4,39 +4,38 @@ from .views import (
     FavoriteListView,
     AddToFavoritesView,
     RemoveFromFavoritesView,
-    ProfileView
+    ProfileView,
 )
 
 
 urlpatterns = [
     path(
-        'login/',
-        LoginView.as_view(template_name='users/login.html'),
-        name='login'
+        "login/",
+        LoginView.as_view(template_name="users/login.html"),
+        name="login"),
+    path(
+        "logout/",
+        LogoutView.as_view(next_page="main_page"),
+        name="logout"
     ),
     path(
-        'logout/',
-        LogoutView.as_view(next_page='main_page'),
-        name='logout'
-    ),
-    path(
-        'favorites/',
+        "favorites/",
         FavoriteListView.as_view(),
-        name='favorites'
+        name="favorites"
     ),
     path(
-        'product/<int:product_id>/add_to_favorites/'
-        , AddToFavoritesView.as_view(),
-        name='add_to_favorites'
+        "product/<int:product_id>/add_to_favorites/",
+        AddToFavoritesView.as_view(),
+        name="add_to_favorites",
     ),
     path(
-        'product/<int:product_id>/remove_from_favorites/',
+        "product/<int:product_id>/remove_from_favorites/",
         RemoveFromFavoritesView.as_view(),
-        name='remove_from_favorites'
+        name="remove_from_favorites",
     ),
     path(
-        'profile/',
+        "profile/",
         ProfileView.as_view(),
-        name='profile'
+        name="profile"
     ),
 ]
