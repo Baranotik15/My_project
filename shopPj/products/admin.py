@@ -21,6 +21,7 @@ class ProductAdmin(admin.ModelAdmin):
         "stock",
         "category",
         "created_at",
+        "image_url"
     )
     list_filter = (
         "category",

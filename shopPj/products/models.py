@@ -26,6 +26,12 @@ class Product(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    image_url = models.URLField(
+        max_length=500,
+        null=True,
+        blank=True,
+        default=None,
+    )
 
     def __str__(self):
         return self.name
