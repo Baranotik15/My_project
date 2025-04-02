@@ -10,6 +10,6 @@ urlpatterns = [
     path(
         "order-success/",
         OrderSuccessView.as_view(),
-        name="order_success.css"
+        name="order_success"
     ),
 ]

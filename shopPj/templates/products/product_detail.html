@@ -4,8 +4,12 @@
 
 <div class="product-container">
   <h1 class="product-title">{{ products_detail.name }}</h1>
-  <div class="product-image">
-    <img src="{{ products_detail.image.url }}" alt="{{ products_detail.name }}">
+  <div class="product-detail-image">
+    {% if products_detail.image_url %}
+      <img src="{{ products_detail.image_url }}" alt="{{ products_detail.name }}">
+    {% else %}
+      <p>Изображение отсутствует</p>
+    {% endif %}
   </div>
   <p class="product-price">Цена: {{ products_detail.price }}₴</p>
   <p class="product-description">Описание: {{ products_detail.description }}</p>
