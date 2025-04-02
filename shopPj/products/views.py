@@ -7,6 +7,7 @@ class ProductListView(ListView):
     model = Product
     template_name = "products/product_list.html"
     context_object_name = "products"
+    paginate_by = 3
 
     def get_queryset(self):
         queryset = Product.objects.all()
@@ -20,7 +21,7 @@ class ProductListView(ListView):
         if search_query:
             queryset = queryset.filter(name__icontains=search_query)
 
-        return queryset  # Не пойму почему не учитывает регистры вроде айконтейнс должен, но не рабоатет
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super(ProductListView, self).get_context_data(**kwargs)
