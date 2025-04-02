@@ -39,8 +39,8 @@
   <div class="menu-table-container">
     <table class="menu-table">
       <tr>
-        <th><a href="" class="full-th-link">Акции</a></th>
-        <th><a href="" class="full-th-link">Топы Продаж</a></th>
+        <th><a href="{% url "main_page" %}" class="full-th-link">Главная</a></th>
+        <th><a href="{% url "profile" %}" class="full-th-link">Профиль</a></th>
         <th><a href="{% url "about" %}" class="full-th-link">О нас</a></th>
         {% if user.is_authenticated %}
           <th>
