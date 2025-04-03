@@ -9,9 +9,13 @@ class OrderForm(forms.ModelForm):
         DELIVERY = "Delivery", "Delivery"
 
     class PaymentChoices(models.TextChoices):
-        CREDIT_CARD = "credit_card", "Credit Card"
-        PAYPAL = "paypal", "PayPal"
+        STRIPE = "stripe", "Stripe"
         IN_CASH = "in_cash", "In Cash"
+
+    stripe_token = forms.CharField(
+        required=False,
+        widget=forms.HiddenInput()
+    )
 
     pickup_address = forms.ChoiceField(
         choices=[
@@ -70,6 +74,7 @@ class OrderForm(forms.ModelForm):
             "delivery_address",
             "phone_number",
             "full_name",
+            "stripe_token",
         ]
 
     def __init__(self, *args, **kwargs):
