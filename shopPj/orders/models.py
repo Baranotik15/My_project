@@ -70,9 +70,6 @@ class Order(models.Model):
         )
         return annotated_order.total_price or 0
 
-    @property
-    def total_price(self):
-        return self.get_total_price()
 
     def __str__(self):
         return f"Order {self.id} by {self.user}"
