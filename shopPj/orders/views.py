@@ -136,17 +136,18 @@ class OrderSuccessView(View):
             )
             return redirect("view_cart")
 
+        if order.status == Order.OrderStatus.PENDING:
+            order.status = Order.OrderStatus.COMPLETED
+            order.save()
+
         order_items = order.order_items.all()
-        total_price = sum(
-            item.product.price * item.quantity
-            for item in order_items
-        )
 
         context = {
             "order": order,
             "order_items": order_items,
-            "total_price": total_price,
+            "total_price":  order.total_price,
         }
+
         return render(
             request,
             "orders/order_success.html",
