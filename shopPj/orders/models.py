@@ -19,9 +19,12 @@ class Order(models.Model):
         choices=OrderStatus.choices,
         default=OrderStatus.PENDING,
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True
+    )
     delivery_method = models.CharField(
         max_length=20,
         choices=[("Pickup", "Pickup"), ("Delivery", "Delivery")],
@@ -29,18 +32,30 @@ class Order(models.Model):
     payment_method = models.CharField(
         max_length=20,
         choices=[
-            ("credit_card", "Credit Card"),
-            ("paypal", "PayPal"),
             ("in_cash", "In Cash"),
+            ("stripe", "Stripe")
         ],
     )
-    delivery_address = models.CharField(max_length=255, blank=True, null=True)
-    pickup_address = models.CharField(max_length=50, blank=True, null=True)
+    delivery_address = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
+    )
+    pickup_address = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True
+    )
     full_name = models.CharField(
         max_length=100,
     )
     phone_number = models.CharField(
         max_length=20,
+    )
+    stripe_payment_intent = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
     )
 
     def get_total_price(self):
@@ -65,10 +80,17 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(
-        Order, on_delete=models.CASCADE, related_name="order_items"
+        Order,
+        on_delete=models.CASCADE,
+        related_name="order_items"
     )
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(default=1)
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE
+    )
+    quantity = models.PositiveIntegerField(
+        default=1
+    )
 
     def get_price(self):
         return self.product.price * self.quantity

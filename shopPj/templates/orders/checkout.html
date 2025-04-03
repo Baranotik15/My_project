@@ -4,21 +4,6 @@
   <form method="post" id="order-form" class="order-form" action="{% url 'checkout' %}">
     {% csrf_token %}
 
-    <div>
-      <h3>Отладка: form.errors</h3>
-      <pre>{{ form.errors|safe }}</pre>
-    </div>
-
-    {% if form.non_field_errors %}
-      <div class="form-errors">
-        <ul>
-          {% for error in form.non_field_errors %}
-            <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}
-
     {% if form.errors %}
       <div class="form-errors">
         <h3>Ошибки формы:</h3>
@@ -33,7 +18,7 @@
     {% endif %}
 
     <div class="form-field">
-      <label for="id_delivery_method">Delivery Method:</label>
+      <label for="id_delivery_method">Способ доставки:</label>
       {{ form.delivery_method }}
       {% if form.delivery_method.errors %}
         <div class="field-error">{{ form.delivery_method.errors }}</div>
@@ -42,7 +27,7 @@
 
     <div id="pickup-fields" class="fields-container" style="display:none;">
       <div class="pickup-field">
-        <label for="id_pickup_address">Choose Store:</label>
+        <label for="id_pickup_address">Выберите магазин:</label>
         {{ form.pickup_address }}
         {% if form.pickup_address.errors %}
           <div class="field-error">{{ form.pickup_address.errors }}</div>
@@ -52,7 +37,7 @@
 
     <div id="delivery-fields" class="fields-container" style="display:none;">
       <div class="delivery-field">
-        <label for="id_delivery_address">Delivery Address:</label>
+        <label for="id_delivery_address">Адрес доставки:</label>
         {{ form.delivery_address }}
         {% if form.delivery_address.errors %}
           <div class="field-error">{{ form.delivery_address.errors }}</div>
@@ -61,7 +46,7 @@
     </div>
 
     <div class="form-field">
-      <label for="id_full_name">Full Name:</label>
+      <label for="id_full_name">Полное имя:</label>
       {{ form.full_name }}
       {% if form.full_name.errors %}
         <div class="field-error">{{ form.full_name.errors }}</div>
@@ -69,7 +54,7 @@
     </div>
 
     <div class="form-field">
-      <label for="id_phone_number">Phone Number:</label>
+      <label for="id_phone_number">Номер телефона:</label>
       {{ form.phone_number }}
       {% if form.phone_number.errors %}
         <div class="field-error">{{ form.phone_number.errors }}</div>
@@ -77,14 +62,14 @@
     </div>
 
     <div class="form-field">
-      <label for="id_payment_method">Payment Method:</label>
+      <label for="id_payment_method">Способ оплаты:</label>
       {{ form.payment_method }}
       {% if form.payment_method.errors %}
         <div class="field-error">{{ form.payment_method.errors }}</div>
       {% endif %}
     </div>
 
-    <button type="submit">Оформить заказ</button>
+    <button type="submit" id="submit-button">Оформить заказ</button>
   </form>
 
   <script>
@@ -92,7 +77,6 @@
       const deliveryMethodField = document.querySelector('#id_delivery_method');
       const pickupFields = document.getElementById('pickup-fields');
       const deliveryFields = document.getElementById('delivery-fields');
-      const form = document.getElementById('order-form');
 
       function toggleFields() {
         const deliveryMethod = deliveryMethodField.value;
@@ -107,11 +91,6 @@
 
       deliveryMethodField.addEventListener('change', toggleFields);
       toggleFields();
-
-      form.addEventListener('submit', function (event) {
-        console.log('Форма отправляется...');
-        console.log('Данные формы:', new FormData(form));
-      });
     });
   </script>
 {% endblock %}
