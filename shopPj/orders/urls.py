@@ -8,7 +8,7 @@ urlpatterns = [
         name="checkout"
     ),
     path(
-        "order-success/",
+        "order-success/<int:order_id>/",
         OrderSuccessView.as_view(),
         name="order_success"
     ),
