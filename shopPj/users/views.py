@@ -10,7 +10,6 @@ from products.models import Product
 
 
 class FavoriteListView(LoginRequiredMixin, ListView):
-    model = Product
     template_name = "users/favorites.html"
     context_object_name = "favorites"
 

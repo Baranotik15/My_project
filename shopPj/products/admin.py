@@ -36,3 +36,23 @@ class ProductAdmin(admin.ModelAdmin):
         "created_at",
         "updated_at",
     )
+    list_editable = (
+        "name",
+        "price",
+        "stock",
+    )
+
+    fields = (
+        "name",
+        "price",
+        "stock",
+    )
+
+    actions = ['delete_selected']
+
+
+    def delete_selected(self, request, queryset):
+        queryset.delete()
+
+    delete_selected.short_description = "Удалить выбранные товары"
+

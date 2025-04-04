@@ -8,7 +8,6 @@ from products.models import Product
 
 
 class CartView(LoginRequiredMixin, ListView):
-    model = CartItem
     template_name = "cart/view_cart.html"
     context_object_name = "cart_items"
 
@@ -53,7 +52,6 @@ class AddToCartView(LoginRequiredMixin, View):
 
 
 class CartItemDeleteView(LoginRequiredMixin, DeleteView):
-    model = CartItem
     template_name = "cart/cart_item_confirm_delete.html"
     context_object_name = "cart_item"
     success_url = reverse_lazy("view_cart")
