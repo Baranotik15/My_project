@@ -4,7 +4,6 @@ from products.models import Product, Category
 
 
 class ProductListView(ListView):
-    model = Product
     template_name = "products/product_list.html"
     context_object_name = "products"
     paginate_by = 8
@@ -33,9 +32,8 @@ class ProductListView(ListView):
 
 
 class ProductDetailView(DetailView):
-    model = Product
     template_name = "products/product_detail.html"
     context_object_name = "products_detail"
 
     def get_queryset(self):
-        return Product.objects.select_related("category")
+        return Product.objects.prefetch_related("category")
