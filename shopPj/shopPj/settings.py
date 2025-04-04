@@ -31,6 +31,11 @@ STRIPE_SECRET_KEY = "sk_test_51R9ebzPKiynM2TgS9xEvsnIliXhOVrZJ2NubQMz3PyFvpvfgdn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+
 ALLOWED_HOSTS = []
 
 
@@ -44,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "debug_toolbar",
     # own app
     "users",
     "products",
@@ -60,6 +66,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "shopPj.urls"
