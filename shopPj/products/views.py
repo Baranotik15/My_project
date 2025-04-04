@@ -10,13 +10,15 @@ class ProductListView(ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        queryset = Product.objects.all()
+        queryset = Product.objects.select_related("category")
+        self.category = None
+
         category_id = self.kwargs.get("category_id")
         search_query = self.request.GET.get("search", "")
 
         if category_id:
-            category = get_object_or_404(Category, id=category_id)
-            queryset = queryset.filter(category=category)
+            self.category = get_object_or_404(Category, id=category_id)
+            queryset = queryset.filter(category=self.category)
 
         if search_query:
             queryset = queryset.filter(name__icontains=search_query)
@@ -24,15 +26,9 @@ class ProductListView(ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
-        context = super(ProductListView, self).get_context_data(**kwargs)
-        category_id = self.kwargs.get("category_id")
-
-        if category_id:
-            category = get_object_or_404(Category, id=category_id)
-            context["category"] = category
-
+        context = super().get_context_data(**kwargs)
+        context["category"] = self.category
         context["search_query"] = self.request.GET.get("search", "")
-
         return context
 
 
@@ -40,3 +36,6 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = "products/product_detail.html"
     context_object_name = "products_detail"
+
+    def get_queryset(self):
+        return Product.objects.select_related("category")
