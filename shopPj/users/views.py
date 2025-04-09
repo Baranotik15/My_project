@@ -2,7 +2,7 @@ import logging
 import threading
 
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
@@ -26,6 +26,7 @@ from products.models import Product
 
 
 logger = logging.getLogger(__name__)
+User = get_user_model()
 
 
 class FavoriteListView(LoginRequiredMixin, ListView):
@@ -144,8 +145,8 @@ class ActivateAccountView(View):
             login(request, user)
             messages.success(
                 request,
-                "Thank you for confirming your email. You can now login to your account.",
+                "Спасибо за подтверждение email. Теперь вы можете войти в ваш аккаунт.",
             )
-            return redirect("accounts:login")
+            return redirect("login")
         else:
             return render(request, "users/activation_invalid.html")

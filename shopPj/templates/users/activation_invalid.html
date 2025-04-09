@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
+{% block style %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static "users/css/email_confirmation_sent.css" %}">
+{% endblock %}
 
 {% block content %}
-<div class="card">
+<div class="form-container">
     <h2>Invalid Activation Link</h2>
-    <p>The confirmation link was invalid, possibly because it has already been used or has expired.</p>
+    <p>
+      Ссылка для подтверждения недействительна, возможно,
+      потому что она уже была использована или срок её действия истёк.
+    </p>
 </div>
 {% endblock %}
