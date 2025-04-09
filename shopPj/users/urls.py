@@ -1,11 +1,12 @@
 from django.contrib.auth.views import LoginView, LogoutView
-from django.urls import path
+from django.urls import path, include
 from .views import (
     FavoriteListView,
     AddToFavoritesView,
     RemoveFromFavoritesView,
     ProfileView,
     SignUpView,
+    ActivateAccountView,
 )
 
 
@@ -39,9 +40,8 @@ urlpatterns = [
         ProfileView.as_view(),
         name="profile"
     ),
-    path(
-        'signup/',
-        SignUpView.as_view(),
-        name='signup'
-    ),
+
+    path("signup/", SignUpView.as_view(), name="signup"),
+    path("activate/<uidb64>/<token>/", ActivateAccountView.as_view(), name="activate"),
+    path("", include("django.contrib.auth.urls")),
 ]
