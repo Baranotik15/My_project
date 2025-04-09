@@ -16,10 +16,10 @@
   <link rel="stylesheet" href="{% static "users/css/profile.css" %}">
   <link rel="stylesheet" href="{% static "base_pattern/css/pagination.css" %}">
   <link rel="stylesheet" href="{% static "users/css/favorites.css" %}">
+  {% block style %}{% endblock %}
 </head>
 <body>
 <header>
-
   <div class="hud">
     <a href="{% url "main_page" %}">
       <img src="{% static 'base_pattern/img/menu.png' %}" alt="Меню" class="icon">
