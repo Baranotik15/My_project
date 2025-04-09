@@ -5,6 +5,7 @@ from .views import (
     AddToFavoritesView,
     RemoveFromFavoritesView,
     ProfileView,
+    SignUpView,
 )
 
 
@@ -37,5 +38,10 @@ urlpatterns = [
         "profile/",
         ProfileView.as_view(),
         name="profile"
+    ),
+    path(
+        'signup/',
+        SignUpView.as_view(),
+        name='signup'
     ),
 ]

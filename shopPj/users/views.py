@@ -68,3 +68,11 @@ class ProfileView(View):
                 "orders": orders_with_details,
             },
         )
+
+
+class SignUpView(View):
+    def get(self, request):
+        return render(request, "users/signup.html")
+
+    def post(self, request):
+        pass
