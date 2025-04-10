@@ -29,20 +29,28 @@ https://dbdiagram.io/d/67e326df75d75cc84473f67f
 ## Установка и запуск
 
 1. Клонируйте репозиторий:
-  используя SSH
-  git clone git@github.com:Baranotik15/My_project.git
-  используя HTTPS
-  git clone https://github.com/Baranotik15/My_project.git
 
-2. Установите зависимости:
+   - **SSH:**
+
+     ```
+     git clone git@github.com:Baranotik15/My_project.git
+     ```
+
+   - **HTTPS:**
+
+     ```
+     git clone https://github.com/Baranotik15/My_project.git
+     ```
+
+3. Установите зависимости:
    pip install -r requirements.txt
 
-3. Настройте файл `.env` с необходимыми переменными окружения (смотрите раздел Конфигурации)
+4. Настройте файл `.env` с необходимыми переменными окружения (смотрите раздел Конфигурации)
 
-4. Примените миграции:
+5. Примените миграции:
    python manage.py migrate
 
-5. Запустите сервер:
+6. Запустите сервер:
    python manage.py runserver
 
 
@@ -65,6 +73,7 @@ https://dbdiagram.io/d/67e326df75d75cc84473f67f
 - `DEFAULT_FROM_EMAIL` — email, с которого отправляются письма (например, `your.email@gmail.com`)
 
 Пример файла `.env`:
+```
   SECRET_KEY=your_django_secret_key
   DEBUG=True
   STRIPE_PUBLIC_KEY=pk_test_yourstripepublickey
@@ -77,6 +86,7 @@ https://dbdiagram.io/d/67e326df75d75cc84473f67f
   EMAIL_HOST_USER=your.email@gmail.com
   EMAIL_HOST_PASSWORD=your_email_password
   DEFAULT_FROM_EMAIL=your.email@gmail.com
+```
 
 ## Лицензия
 ToDo
