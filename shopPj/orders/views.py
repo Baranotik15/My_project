@@ -95,7 +95,7 @@ class CheckoutView(View):
                         metadata={"order_id": order.id},
                     )
 
-                    order.stripe_payment_intent = session.payment_intent
+                    order.stripe_session_id = session.id
                     order.save()
 
                     messages.success(request, "Переходите к оплате!")
@@ -135,12 +135,22 @@ class OrderSuccessView(View):
             user=request.user
         )
 
-        if order.payment_method == "stripe" and order.stripe_payment_intent:
+        if order.payment_method == "stripe" and order.stripe_session_id:
             try:
-                payment_intent = stripe.PaymentIntent.retrieve(order.stripe_payment_intent)
+                session = stripe.checkout.Session.retrieve(order.stripe_session_id)
+                if not session.payment_intent:
+                    messages.error(request, "Оплата ещё не начата.")
+                    return redirect("view_cart")
+
+                payment_intent = stripe.PaymentIntent.retrieve(session.payment_intent)
                 if payment_intent.status != "succeeded" and order.status == Order.OrderStatus.PENDING:
                     messages.error(request, "Оплата не была завершена.")
                     return redirect("view_cart")
+
+                if not order.stripe_payment_intent:
+                    order.stripe_payment_intent = session.payment_intent
+                    order.save()
+
             except stripe.error.StripeError as e:
                 messages.error(request, f"Ошибка проверки оплаты: {str(e)}")
                 return redirect("view_cart")

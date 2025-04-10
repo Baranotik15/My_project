@@ -57,6 +57,11 @@ class Order(models.Model):
         blank=True,
         null=True
     )
+    stripe_session_id = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
+    )
 
     def get_total_price(self):
         annotated_order = (
