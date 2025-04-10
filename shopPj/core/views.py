@@ -1,10 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import TemplateView, View
 
 from products.models import Category
 
 
-class Home(View):
+class Home(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
 
