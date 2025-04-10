@@ -29,9 +29,9 @@ https://dbdiagram.io/d/67e326df75d75cc84473f67f
 ## Установка и запуск
 
 1. Клонируйте репозиторий:
-  # SSH
+  используя SSH
   git clone git@github.com:Baranotik15/My_project.git
-  # HTTPS
+  используя HTTPS
   git clone https://github.com/Baranotik15/My_project.git
 
 2. Установите зависимости:
