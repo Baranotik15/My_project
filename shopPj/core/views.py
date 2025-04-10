@@ -5,7 +5,7 @@ from django.views.generic import TemplateView, View
 from products.models import Category
 
 
-class Home(LoginRequiredMixin, View):
+class Home(View):
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
 
