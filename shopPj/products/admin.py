@@ -7,6 +7,15 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "name",
+        "image",
+    )
+    list_editable = (
+        "name",
+        "image",
+    )
+    fields = (
+        "name",
+        "image",
     )
     search_fields = ("name",)
     ordering = ("name",)
@@ -21,7 +30,7 @@ class ProductAdmin(admin.ModelAdmin):
         "stock",
         "category",
         "created_at",
-        "image_url"
+        "image"
     )
     list_filter = (
         "category",
@@ -40,12 +49,15 @@ class ProductAdmin(admin.ModelAdmin):
         "name",
         "price",
         "stock",
+        "category",
+        "image",
     )
-
     fields = (
         "name",
         "price",
         "stock",
+        "category",
+        "image",
     )
 
     actions = ['delete_selected']

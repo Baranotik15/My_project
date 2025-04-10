@@ -5,8 +5,8 @@
 <div class="product-container">
   <h1 class="product-title">{{ products_detail.name }}</h1>
   <div class="product-detail-image">
-    {% if products_detail.image_url %}
-      <img src="{{ products_detail.image_url }}" alt="{{ products_detail.name }}">
+    {% if products_detail.image %}
+      <img src="{{ products_detail.image.url }}" alt="{{ products_detail.name }}">
     {% else %}
       <p>Изображение отсутствует</p>
     {% endif %}

@@ -14,6 +14,8 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
+from shopPj.fix import PatchedDropboxStorage
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -171,7 +173,22 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = "login"
+
+
+STORAGES = {
+    "default": {
+        "BACKEND": "shopPj.fix.PatchedDropboxStorage",
+        "OPTIONS": {
+            "app_key": os.getenv("DROPBOX_APP_KEY"),
+            "app_secret": os.getenv("DROPBOX_APP_SECRET"),
+            "oauth2_refresh_token": os.getenv("DROPBOX_OAUTH2_REFRESH_TOKEN"),
+            "root_path": "/DjangoMedia",
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}

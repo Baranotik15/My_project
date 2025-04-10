@@ -9,8 +9,8 @@
       <a href="{% url 'product_list' category_id=category.id %}" class="category-item-link">
         <div class="category-item">
           <div class="category-image">
-            {% if category.image_url %}
-              <img src="{{ category.image_url }}" alt="{{ category.name }}">
+            {% if category.image %}
+              <img src="{{ category.image.url }}" alt="{{ category.name }}">
             {% else %}
               <p>Изображение отсутствует</p>
             {% endif %}

@@ -3,8 +3,8 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    image_url = models.URLField(
-        max_length=500,
+    image = models.ImageField(
+        upload_to='categories/',
         null=True,
         blank=True,
         default=None,
@@ -32,8 +32,8 @@ class Product(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    image_url = models.URLField(
-        max_length=500,
+    image = models.ImageField(
+        upload_to='products/',
         null=True,
         blank=True,
         default=None,
