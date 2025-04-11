@@ -1,34 +1,34 @@
 # Online Clothing Store
 
-Это стандартный интернет-магазин одежды, разработанный с использованием Django. Пользователи могут просматривать каталог товаров, добавлять их в корзину, оформлять заказы и оплачивать через Stripe.
-Реализована регистрация и авторизация с подтверждением по электронной почте, а также админ-панель для управления товарами.
+This is a standard online clothing store developed using Django. Users can browse the product catalog, add items to the cart, place orders, and pay via Stripe.  
+User registration and authentication with email confirmation are implemented, along with an admin panel for managing products.
 
-## Функционал
+## Features
 
-- Просмотр списка товаров
-- Детальный просмотр товара
-- Добавление товаров в корзину
-- Добавление товара в избранное
-- Оформление заказа
-- Оплата через Stripe
-- Регистрация и авторизация пользователей с подтверждением на почту
-- Админ-панель для добавления и обновления товаров
+- Browse product listings  
+- View detailed product pages  
+- Add items to the cart  
+- Add items to favorites  
+- Place orders  
+- Payment via Stripe  
+- User registration and login with email confirmation  
+- Admin panel for adding and updating products  
 
-## Используемые технологии
+## Technologies Used
 
-- **Django 5.1.7** — основной фреймворк
-- **SQLite** — база данных (для разработки; для production рекомендуется PostgreSQL)
-- **Stripe 12.0.0** — для обработки платежей
-- **Dropbox** — для хранения изображений товаров
+- **Django 5.1.7** — main framework  
+- **SQLite** — database (used for development; PostgreSQL is recommended for production)  
+- **Stripe 12.0.0** — for payment processing  
+- **Dropbox** — for storing product images  
 
+## DB Model Diagram
 ![Untitled](https://github.com/user-attachments/assets/e7b6f166-d64d-4918-8d95-72f3cf900144)
 
-
 https://dbdiagram.io/d/67e326df75d75cc84473f67f
-  
-## Установка и запуск
 
-1. Клонируйте репозиторий:
+## Installation and Setup
+
+1. Clone the repository:
 
    - **SSH:**
 
@@ -42,54 +42,68 @@ https://dbdiagram.io/d/67e326df75d75cc84473f67f
      git clone https://github.com/Baranotik15/My_project.git
      ```
 
-3. Установите зависимости:
+2. Install dependencies:  
+   ```
    pip install -r requirements.txt
+   ```
 
-4. Настройте файл `.env` с необходимыми переменными окружения (смотрите раздел Конфигурации)
+3. Configure the `.env` file with the required environment variables (see Configuration section)
 
-5. Примените миграции:
+4. Apply migrations:  
+   ```
    python manage.py migrate
+   ```
 
-6. Запустите сервер:
+5. Run the server:  
+   ```
    python manage.py runserver
+   ```
 
+## Configuration
 
+To run the application, create a `.env` file in the root directory of the project and specify the following environment variables:
 
-## Конфигурация
+- `SECRET_KEY` — Django secret key (you can generate one using `django.core.management.utils.get_random_secret_key()`)  
+- `DEBUG` — `True` for development, `False` for production  
+____
+- `STRIPE_PUBLIC_KEY` — your Stripe public key   (You can found info here: https://docs.stripe.com/keys)
+- `STRIPE_SECRET_KEY` — your Stripe secret key
+____
+- `DROPBOX_APP_KEY` — your Dropbox app key  (You can do it here: https://www.dropbox.com/developers/apps/create)
+- `DROPBOX_APP_SECRET` — your Dropbox app secret  
+- `DROPBOX_ACCESS_TOKEN` — your Dropbox access token
+- ____
+- `EMAIL_HOST` — email host (e.g., if gmail `smtp.gmail.com`)  
+- `EMAIL_PORT` — email port (e.g., if TLS `587` else if SSL `465`)  
+- `EMAIL_HOST_USER` — email host user (e.g., your email)  
+- `EMAIL_HOST_PASSWORD` — email host password (need on two-factor authentication)
+- `DEFAULT_FROM_EMAIL` — the email address from which emails will be sent (e.g., `your.email@gmail.com`)  
+____
 
-Для работы приложения необходимо создать файл `.env` в корневой директории проекта и указать следующие переменные окружения:
-
-- `SECRET_KEY` — секретный ключ Django (например, сгенерируйте через `django.core.management.utils.get_random_secret_key()`)
-- `DEBUG` — `True` для разработки, `False` для production
-- `STRIPE_PUBLIC_KEY` — публичный ключ Stripe
-- `STRIPE_SECRET_KEY` — секретный ключ Stripe
-- `DROPBOX_APP_KEY` — ключ приложения Dropbox
-- `DROPBOX_APP_SECRET` — секретный ключ приложения Dropbox
-- `DROPBOX_ACCESS_TOKEN` — токен доступа Dropbox
-- `EMAIL_HOST` — хост почтового сервера (например, `smtp.gmail.com`)
-- `EMAIL_PORT` — порт почтового сервера (например, `587`)
-- `EMAIL_HOST_USER` — пользователь почтового сервера (например, ваш email)
-- `EMAIL_HOST_PASSWORD` — пароль почтового сервера
-- `DEFAULT_FROM_EMAIL` — email, с которого отправляются письма (например, `your.email@gmail.com`)
-
-Пример файла `.env`:
+Example `.env` file (.env.sample):
 ```
-  SECRET_KEY=your_django_secret_key
-  DEBUG=True
-  STRIPE_PUBLIC_KEY=pk_test_yourstripepublickey
-  STRIPE_SECRET_KEY=sk_test_yourstripesecretkey
-  DROPBOX_APP_KEY=your_dropbox_app_key
-  DROPBOX_APP_SECRET=your_dropbox_app_secret
-  DROPBOX_ACCESS_TOKEN=your_dropbox_access_token
-  EMAIL_HOST=smtp.gmail.com
-  EMAIL_PORT=587
-  EMAIL_HOST_USER=your.email@gmail.com
-  EMAIL_HOST_PASSWORD=your_email_password
-  DEFAULT_FROM_EMAIL=your.email@gmail.com
+# DB
+POSTGRES_DB=
+POSTGRES_DB_PORT=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+POSTGRES_HOST=
+
+# Django
+SECRET_KEY=c3kItd4jbqdIwrUOc6A4h1c7Yy7P0S
+DJANGO_SETTINGS_MODULE=confit.settings.dev
+
+# DropBox
+DROPBOX_APP_KEY=
+DROPBOX_APP_SECRET=
+DROPBOX_OAUTH2_REFRESH_TOKEN=
+
+#Stripe
+STRIPE_PUBLIC_KEY=
+STRIPE_SECRET_KEY=
+
+#Email
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=
+DEFAULT_FROM_EMAIL=
 ```
-
-## Лицензия
-ToDo
-
-
-

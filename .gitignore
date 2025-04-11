@@ -4,6 +4,8 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+shopPj/check_orders.log
+
 
 # Игнорируем настройки IDE
 .vscode/
