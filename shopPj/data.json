@@ -1,0 +1,994 @@
+[
+{
+  "model": "users.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$NDvtaOKrIFM3I8MLmJKf8n$ZI2rhvW3gb1OJVin5HBjVXCWxRcRUhwvLNmDocxQ6E8=",
+    "last_login": "2025-04-10T11:58:54.073Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-04-01T23:40:49.849Z",
+    "groups": [],
+    "user_permissions": [],
+    "favorite_products": [
+      3
+    ]
+  }
+},
+{
+  "model": "products.category",
+  "pk": 1,
+  "fields": {
+    "name": "Боди",
+    "image": "categories\\SportLife_3KakBUr.jpg"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 2,
+  "fields": {
+    "name": "Спортивный костюм",
+    "image": "categories\\sport_fiq93wG.jpeg"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 3,
+  "fields": {
+    "name": "Топы",
+    "image": "categories/star.jpeg"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 4,
+  "fields": {
+    "name": "Юбки",
+    "image": "categories/Gradian.jpeg"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 5,
+  "fields": {
+    "name": "Пиджаки",
+    "image": "categories\\Santor_Mh6ARZh.jpeg"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 7,
+  "fields": {
+    "name": "Платья",
+    "image": "categories/Black_Rose.jpeg"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 8,
+  "fields": {
+    "name": "Свитера",
+    "image": "categories/RedFlag.jpeg"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 9,
+  "fields": {
+    "name": "Обувь",
+    "image": "categories/Chunky_Heel.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 1,
+  "fields": {
+    "name": "Slim Body - Creme",
+    "description": "Этот стильный и элегантный топ \"Slim Body - Creme\" выполнен из высококачественного эластичного материала, который идеально облегает фигуру, подчеркивая её изящные линии. Кремовый оттенок придает ему универсальность, позволяя сочетать с различными цветами и стилями одежды.\n\nМатериал: Легкая и воздухопроницаемая ткань с добавлением спандекса для максимального комфорта и свободы движений. Ткань нежно прилегает к коже, обеспечивая отличную посадку без утяжеления.",
+    "price": "1500.00",
+    "stock": 10,
+    "category": 1,
+    "created_at": "2025-04-01T23:43:26.937Z",
+    "updated_at": "2025-04-10T05:30:57.764Z",
+    "image": "products/Slim_Body_-_Creme.jpg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "name": "Freedom Вody",
+    "description": "\"Freedom Body\" — это комфортная и стильная одежда, которая идеально сочетает в себе свободу движений и элегантный дизайн. Этот предмет одежды выполнен из высококачественных материалов, которые обеспечивают отличную вентиляцию и приятные тактильные ощущения на коже.\n\nМатериал: Ткань с высокой степенью эластичности, в состав которой входит хлопок и лайкра. Этот материал прекрасно тянется, повторяя контуры тела, и обеспечивает ощущение легкости и комфорта в течение всего дня.",
+    "price": "1650.00",
+    "stock": 100,
+    "category": 1,
+    "created_at": "2025-04-01T23:43:54.921Z",
+    "updated_at": "2025-04-10T05:30:55.904Z",
+    "image": "products/Freedom.jpg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 3,
+  "fields": {
+    "name": "Anse Body",
+    "description": "\"Anse Body\" — это одежда, которая сочетает в себе элегантность и удобство, идеально подходящая для создания стильных образов в повседневной жизни или для особых случаев. Эта модель выделяется своим уникальным дизайном, который подчеркивает фигуру, обеспечивая комфорт в течение всего дня.\n\nМатериал: Мягкий и эластичный материал, состоящий из комбинации высококачественного полиэстера и эластана, что делает ткань износостойкой и долговечной. Влага и воздух легко проходят через волокна, обеспечивая комфорт при носке.",
+    "price": "1200.00",
+    "stock": 1,
+    "category": 1,
+    "created_at": "2025-04-01T23:44:09.962Z",
+    "updated_at": "2025-04-10T05:30:54.103Z",
+    "image": "products/Anse_body.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 4,
+  "fields": {
+    "name": "Body 3-N",
+    "description": "\"Body 3-N\" — это идеальный выбор для тех, кто ценит комфорт и практичность в повседневной жизни. Сдержанный и универсальный дизайн делает этот предмет одежды подходящим для различных ситуаций, будь то тренировка, прогулка или просто день в офисе.\n\nМатериал: Ткань состоит из комбинации нейлона и спандекса, что делает её эластичной и хорошо сидящей по фигуре. Нейлон обеспечивает прочность и долговечность, а спандекс добавляет гибкости и мягкости, обеспечивая комфорт в движении.",
+    "price": "950.00",
+    "stock": 1000,
+    "category": 1,
+    "created_at": "2025-04-01T23:58:40.711Z",
+    "updated_at": "2025-04-10T05:30:51.970Z",
+    "image": "products/Body_3-N.jpg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 5,
+  "fields": {
+    "name": "Body SportLife",
+    "description": "\"Body SportLife\" — это стильная и функциональная одежда для активных людей, которая сочетает в себе высокое качество, комфорт и поддержку во время тренировок или активного отдыха. Этот предмет одежды идеально подходит для тех, кто ведет здоровый образ жизни и ценит удобство в движении.\n\nМатериал: Изготовлен из высокотехнологичного полиэстера и эластана, который обладает отличной влагопоглощаемостью и позволяет коже дышать, сохраняя комфорт даже в самых интенсивных нагрузках. Ткань обладает эластичностью, что позволяет телу двигаться свободно и легко.",
+    "price": "1400.00",
+    "stock": 10,
+    "category": 1,
+    "created_at": "2025-04-01T23:58:51.111Z",
+    "updated_at": "2025-04-10T05:30:50.126Z",
+    "image": "products/SportLife.jpg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 6,
+  "fields": {
+    "name": "Body SSEENSE",
+    "description": "\"Body SSEENSE\" — это стильная и утонченная одежда для людей, которые ценят комфорт и элегантность даже в повседневной жизни. Этот продукт идеально сочетает в себе современный дизайн и высокотехнологичные материалы, которые обеспечивают максимальный комфорт при носке и стильный внешний вид.\n\nМатериал: Комбинация мягкого хлопка и эластана, которая придает материалу отличную эластичность, но при этом сохраняет его мягкость и комфорт. Хлопок позволяет коже дышать, а эластан помогает одежде сидеть идеально по фигуре, не сковывая движений.",
+    "price": "1250.00",
+    "stock": 121,
+    "category": 1,
+    "created_at": "2025-04-01T23:58:59.212Z",
+    "updated_at": "2025-04-10T05:30:48.655Z",
+    "image": "products/SSEENSE.jpg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 7,
+  "fields": {
+    "name": "Body SKINWEAR",
+    "description": "\"Body SKINWEAR\" — это инновационная одежда, специально разработанная для обеспечения максимального комфорта и поддержки. Идеальный выбор для тех, кто ищет не только стиль, но и функциональность в своем гардеробе. Подходит для активного образа жизни, тренировок и даже как базовый элемент для создания стильных образов на каждый день.\n\nМатериал: Изготовлен из высококачественного микрофибрового материала с добавлением спандекса, что обеспечивает отличную эластичность и идеально повторяет форму тела. Этот тканевый состав обладает влаговыводящими свойствами, а также обеспечивает отличную терморегуляцию, что делает его комфортным в любой ситуации.",
+    "price": "1500.00",
+    "stock": 1312,
+    "category": 1,
+    "created_at": "2025-04-02T00:19:08.684Z",
+    "updated_at": "2025-04-10T05:30:46.713Z",
+    "image": "products/SKINWEAR.jpg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 10,
+  "fields": {
+    "name": "Body Moya",
+    "description": "\"Body Moya\" — это элегантная и функциональная одежда, которая сочетает в себе комфорт и стиль. Разработанное для активных людей, ценящих свободу движений и практичность в повседневной жизни. Отличается легкостью, мягкостью и универсальностью, что делает его идеальным выбором для разных ситуаций, от тренировок до прогулок.\r\n\r\nМатериал: Мягкий и дышащий хлопковый трикотаж с добавлением эластана для улучшенной эластичности и сохранения формы. Такой материал позволяет телу \"дышать\", оставаясь при этом в комфортной температуре в течение всего дня. Приятный на ощупь, он подходит для длительного ношения и не вызывает дискомфорта.",
+    "price": "1300.00",
+    "stock": 10,
+    "category": 1,
+    "created_at": "2025-04-02T02:46:57.589Z",
+    "updated_at": "2025-04-10T05:30:45.075Z",
+    "image": "products/Moya.jpg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 11,
+  "fields": {
+    "name": "Body Sura",
+    "description": "Body Sura: Изготовлен из мягкого и эластичного материала, который обеспечивает идеальную посадку и комфорт на протяжении всего дня. Ткань Body Sura обладает высокой воздухопроницаемостью, что делает его отличным выбором для активного использования. Он идеально подходит для тех, кто ценит комфорт, стиль и долговечность. Эта модель обладает стильным дизайном, который подчеркивает форму тела, создавая ощущение легкости и уверенности.",
+    "price": "1600.00",
+    "stock": 10,
+    "category": 1,
+    "created_at": "2025-04-02T02:48:05.411Z",
+    "updated_at": "2025-04-10T05:29:39.313Z",
+    "image": "products/Sura.jpg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 12,
+  "fields": {
+    "name": "Thinking",
+    "description": "Спортивный костюм \"Thinking\" — идеальный выбор для тех, кто ценит комфорт и стиль даже в моменты активного отдыха. Изготовленный из высококачественного материала, этот костюм дарит отличную свободу движений и вентиляцию, обеспечивая удобство при любых нагрузках. Мягкий, но прочный, он идеально подходит для утренних пробежек, тренировок в зале или просто для повседневного использования. Классический дизайн с современными элементами придает костюму стильный и сдержанный вид. Мудро выбрав костюм \"Thinking\", вы выбираете не только практичность, но и уверенность в каждом своем шаге.",
+    "price": "1900.00",
+    "stock": 5,
+    "category": 2,
+    "created_at": "2025-04-02T02:53:13.174Z",
+    "updated_at": "2025-04-10T05:35:45.836Z",
+    "image": "products/sport.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 13,
+  "fields": {
+    "name": "Star",
+    "description": "Топ \"Star\" — это идеальный выбор для тех, кто хочет добавить яркий акцент в свой гардероб. Легкий и воздушный, этот топ идеально подходит как для активного отдыха, так и для повседневных прогулок по городу. Он выполнен из мягкого материала, который дарит комфорт и не сковывает движения. Элегантный и стильный, с оригинальными деталями, топ \"Star\" добавит уверенности в каждом вашем шаге. Он прекрасно сочетается с джинсами, юбками или спортивными брюками, создавая универсальный образ для любого случая. Будьте в центре внимания с топом \"Star\"!",
+    "price": "550.00",
+    "stock": 15,
+    "category": 3,
+    "created_at": "2025-04-02T02:55:15.474Z",
+    "updated_at": "2025-04-10T05:39:20.476Z",
+    "image": "products/star.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 14,
+  "fields": {
+    "name": "Gradian",
+    "description": "Юбка \"Gradian\" — это элегантный и стильный элемент вашего гардероба, который идеально сочетает в себе современный дизайн и комфорт. Слегка расклешенная форма подчеркивает силуэт и дарит свободу движений, делая юбку подходящей для любых случаев. Высококачественный материал позволяет коже дышать, а мягкая текстура делает изделие приятным на ощупь. Юбка \"Gradian\" отличается утонченным градиентным переходом цвета, который добавляет динамичности и оригинальности вашему образу. Сочетайте с топами, блузами или футболками — она будет отлично смотреться как на casual-вечерках, так и в более официальных ситуациях.",
+    "price": "999.00",
+    "stock": 10,
+    "category": 4,
+    "created_at": "2025-04-02T02:57:36.485Z",
+    "updated_at": "2025-04-10T05:43:47.835Z",
+    "image": "products/Gradian.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 15,
+  "fields": {
+    "name": "Santor",
+    "description": "Пиджак \"Santor\" — это воплощение стиля и элегантности. Изготовленный из высококачественного материала, он придает образу уверенности и изысканности. Классический крой с аккуратными линиями подчеркивает фигуру, создавая безупречный силуэт, а продуманные детали, такие как изысканные пуговицы и идеально подобранная подкладка, добавляют пиджаку особую изюминку. \"Santor\" идеально подходит как для деловых встреч, так и для более неформальных мероприятий, легко сочетаясь с брюками или джинсами. Этот пиджак — отличный выбор для тех, кто ценит стиль, комфорт и внимание к деталям.",
+    "price": "1600.00",
+    "stock": 10,
+    "category": 5,
+    "created_at": "2025-04-02T03:00:40.311Z",
+    "updated_at": "2025-04-10T05:48:19.715Z",
+    "image": "products/Santor.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 16,
+  "fields": {
+    "name": "Chunky Heel",
+    "description": "Обувь \"Chunky Heel\" — это стильное и удобное решение для тех, кто не готов идти на компромисс между модой и комфортом. С крупным устойчивым каблуком, этот стиль обуви сочетает в себе элегантность и практичность. Массивный каблук обеспечивает отличную поддержку и комфорт при ходьбе, а современный дизайн делает обувь универсальной — она идеально подойдет как для повседневных, так и для вечерних образов. Выполненная из качественных материалов, обувь \"Chunky Heel\" отлично подчеркивает ноги, обеспечивая уверенность в каждом шаге.",
+    "price": "1200.00",
+    "stock": 3,
+    "category": 9,
+    "created_at": "2025-04-02T03:02:31.434Z",
+    "updated_at": "2025-04-10T05:41:21.352Z",
+    "image": "products/Chunky_Heel.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 17,
+  "fields": {
+    "name": "Black Rose",
+    "description": "Платье \"Black Rose\" — элегантный выбор для тех, кто ценит стиль и утонченность. Это платье, выполненное в классическом черном цвете, сочетает в себе женственность и строгость. Его изысканный силуэт и аккуратные линии идеально подчеркивают фигуру, создавая образ, который не останется незамеченным. Изготовленное из качественных тканей, платье \"Black Rose\" дарит комфорт в течение всего дня или вечера, будь то деловая встреча или вечерний выход. Легкость в сочетании с классической темной палитрой делает это платье универсальным, подходящим для различных мероприятий и стилей.",
+    "price": "2200.00",
+    "stock": 2,
+    "category": 7,
+    "created_at": "2025-04-02T03:04:22.856Z",
+    "updated_at": "2025-04-10T05:49:36.995Z",
+    "image": "products/Black_Rose.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 18,
+  "fields": {
+    "name": "RadFlag",
+    "description": "Свитер \"RadFlag\" — смелый и стильный выбор для любителей ярких акцентов и удобства. Этот свитер привлекает внимание своим уникальным дизайном, который идеально сочетает в себе элементы кэжуала и спортивного стиля. Мягкий и теплый материал обеспечит комфорт в холодное время года, а оригинальная отделка с элементами флага придаст образу индивидуальности. \"RadFlag\" станет отличным дополнением как для повседневных прогулок, так и для создания модных комплектов на выход.",
+    "price": "1400.00",
+    "stock": 5,
+    "category": 8,
+    "created_at": "2025-04-02T03:06:20.848Z",
+    "updated_at": "2025-04-10T05:46:10.836Z",
+    "image": "products/RedFlag.jpeg"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 30,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "status": "Completed",
+    "created_at": "2025-04-10T09:27:02.264Z",
+    "updated_at": "2025-04-10T09:27:42.464Z",
+    "delivery_method": "Pickup",
+    "payment_method": "stripe",
+    "delivery_address": "",
+    "pickup_address": "store3",
+    "full_name": "Corect",
+    "phone_number": "111111111",
+    "stripe_payment_intent": "pi_3RCHObPKiynM2TgS0crTQIzJ",
+    "stripe_session_id": "cs_test_a1aB1VjuiTGTcUuJajKNq28NqsL0SivfBmVFT2Qk6pSyi6vLvRLUL9nkSZ"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 31,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "status": "Pending",
+    "created_at": "2025-04-10T09:29:31.845Z",
+    "updated_at": "2025-04-10T09:29:32.630Z",
+    "delivery_method": "Pickup",
+    "payment_method": "stripe",
+    "delivery_address": "",
+    "pickup_address": "store3",
+    "full_name": "Inccorect",
+    "phone_number": "22222222",
+    "stripe_payment_intent": null,
+    "stripe_session_id": "cs_test_a1ZPtyXPvDq3XYnV41zHbuIhCBnsoBID5y6aJSgjUIsoNDwLnDLror6PK7"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 33,
+  "fields": {
+    "order": 30,
+    "product": 1,
+    "quantity": 1
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 34,
+  "fields": {
+    "order": 31,
+    "product": 1,
+    "quantity": 2
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 11,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 13,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 14,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 15,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 16,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 17,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 18,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 19,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 20,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 21,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 22,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 23,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 24,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 25,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 26,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 27,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 28,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 29,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 30,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 31,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": false
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": 32,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "is_active": true
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 1,
+  "fields": {
+    "cart": 1,
+    "product": 7,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 2,
+  "fields": {
+    "cart": 2,
+    "product": 3,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 3,
+  "fields": {
+    "cart": 3,
+    "product": 14,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 4,
+  "fields": {
+    "cart": 4,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 5,
+  "fields": {
+    "cart": 5,
+    "product": 14,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 6,
+  "fields": {
+    "cart": 6,
+    "product": 12,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 7,
+  "fields": {
+    "cart": 7,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 8,
+  "fields": {
+    "cart": 8,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 9,
+  "fields": {
+    "cart": 9,
+    "product": 14,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 10,
+  "fields": {
+    "cart": 10,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 11,
+  "fields": {
+    "cart": 11,
+    "product": 12,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 12,
+  "fields": {
+    "cart": 11,
+    "product": 14,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 13,
+  "fields": {
+    "cart": 12,
+    "product": 12,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 14,
+  "fields": {
+    "cart": 13,
+    "product": 14,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 15,
+  "fields": {
+    "cart": 14,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 16,
+  "fields": {
+    "cart": 15,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 17,
+  "fields": {
+    "cart": 16,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 18,
+  "fields": {
+    "cart": 17,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 19,
+  "fields": {
+    "cart": 18,
+    "product": 17,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 20,
+  "fields": {
+    "cart": 18,
+    "product": 14,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 21,
+  "fields": {
+    "cart": 19,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 22,
+  "fields": {
+    "cart": 20,
+    "product": 14,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 23,
+  "fields": {
+    "cart": 21,
+    "product": 14,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 24,
+  "fields": {
+    "cart": 22,
+    "product": 14,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 25,
+  "fields": {
+    "cart": 23,
+    "product": 6,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 26,
+  "fields": {
+    "cart": 24,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 27,
+  "fields": {
+    "cart": 25,
+    "product": 14,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 28,
+  "fields": {
+    "cart": 26,
+    "product": 14,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 29,
+  "fields": {
+    "cart": 27,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 30,
+  "fields": {
+    "cart": 28,
+    "product": 12,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 31,
+  "fields": {
+    "cart": 28,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 32,
+  "fields": {
+    "cart": 29,
+    "product": 13,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 33,
+  "fields": {
+    "cart": 30,
+    "product": 1,
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.cartitem",
+  "pk": 34,
+  "fields": {
+    "cart": 31,
+    "product": 1,
+    "quantity": 2
+  }
+}
+]
