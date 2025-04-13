@@ -107,3 +107,5 @@ EMAIL_HOST_USER=
 EMAIL_HOST_PASSWORD=
 DEFAULT_FROM_EMAIL=
 ```
+## SITE EXEMPLE:
+-  https://shop-store-scissors.onrender.com

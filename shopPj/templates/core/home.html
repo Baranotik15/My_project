@@ -4,19 +4,19 @@
 
   <h1> Каталог </h1>
 
-  <div class="category-container">
+  <div class="products">
     {% for category in categories %}
-      <a href="{% url 'product_list' category_id=category.id %}" class="category-item-link">
-        <div class="category-item">
-          <div class="category-image">
+      <a href="{% url 'product_list' category_id=category.id %}">
+        <div class="product-item">
+          <div class="product-image">
             {% if category.image %}
               <img src="{{ category.image.url }}" alt="{{ category.name }}">
             {% else %}
               <p>Изображение отсутствует</p>
             {% endif %}
           </div>
-          <div class="category-name">
-            {{ category.name }}
+          <div class="product-info">
+            <div class="product-name">{{ category.name }}</div>
           </div>
         </div>
       </a>
