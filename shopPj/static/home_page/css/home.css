@@ -212,21 +212,44 @@ button:hover {
 @media (max-width: 768px) {
   .catalog-container {
     flex-direction: column;
+    align-items: center;
     gap: 30px;
-    margin-bottom: 150px;
+    padding: 0 20px;
+    margin-bottom: 100px;
+  }
+
+  .phones-block, .socials-block {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .phone-item, .social-item {
+    width: 100%;
   }
 }
 
-button.full-th-link {
-  background: none;
-  border: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-  padding: 0;
-}
+@media (max-width: 480px) {
+  .catalog-container {
+    padding: 0 10px;
+  }
 
-button.full-th-link:hover {
-  background: none;
-  color: inherit;
+  .phones-block, .socials-block {
+    max-width: 100%;
+  }
+
+  .phone-item, .social-item {
+    flex-direction: row;
+    align-items: center;
+    height: auto;
+    padding: 12px;
+  }
+
+  .phone-item img, .social-item img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .phone-item span, .social-item span {
+    font-size: 16px;
+  }
 }
