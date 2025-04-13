@@ -1,6 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% if messages %}
+    <div class="mb-4" style="text-align: center; margin-bottom: 20px;">
+      {% for message in messages %}
+        <div class="message {% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% else %}info{% endif %}"
+             style="padding: 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; margin-bottom: 1rem; width: 100%; max-width: 400px; text-align: center; margin: 0 auto; display: block;">
+          {% if message.tags == 'success' %}
+            <div style="background-color: #d1fae5; color: #14532d;">
+              {{ message }}
+            </div>
+          {% elif message.tags == 'error' %}
+            <div style="background-color: #fee2e2; color: #b91c1c;">
+              {{ message }}
+            </div>
+          {% else %}
+            <div style="background-color: #f3f4f6; color: #1f2937;">
+              {{ message }}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
   <h2 style="text-align: center; font-size: 2rem; margin-bottom: 20px;">Вход</h2>
   <div class="login-container">
     <form method="post">
