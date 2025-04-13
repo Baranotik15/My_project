@@ -49,7 +49,7 @@ button:hover {
   gap: 20px;
   padding: 20px 10%;
   justify-content: flex-start;
-  flex-direction: row
+  flex-direction: row;
 }
 
 .category-name {
@@ -160,45 +160,59 @@ button:hover {
 .catalog-container {
   display: flex;
   justify-content: center;
-  gap: 150px;
-  margin-bottom: 150px;
+  align-items: center;
+  gap: 4%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2% 0;
 }
 
-.phones-block, .socials-block {
+.phones-block,
+.socials-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  width: 250px;
+  width: 40%;
+  min-width: 120px;
+  max-width: 300px;
+  gap: 2vh;
 }
 
-.phone-item, .social-item {
+.phone-item,
+.social-item {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
+  gap: 2%;
   background-color: #f0f0f0;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2% 3%;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, opacity 0.3s ease;
   width: 100%;
-  height: 80px;
+  height: 10vh;
+  min-height: 50px;
 }
 
-.phone-item:hover, .social-item:hover {
+.phone-item:hover,
+.social-item:hover {
   transform: scale(1.05);
   opacity: 0.8;
 }
 
-.phone-item img, .social-item img {
-  width: 50px;
-  height: 50px;
+.phone-item img,
+.social-item img {
+  width: 15%;
+  max-width: 40px;
+  min-width: 25px;
+  height: auto;
   transition: transform 0.3s ease;
 }
 
-.phone-item span, .social-item span {
-  font-size: 18px;
+.phone-item span,
+.social-item span {
+  font-size: 1.1rem;
   font-weight: bold;
   font-family: 'Arial', sans-serif;
   color: #333;
@@ -207,49 +221,38 @@ button:hover {
 .social-item a {
   text-decoration: none;
   color: inherit;
-}
-
-@media (max-width: 768px) {
-  .catalog-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    padding: 0 20px;
-    margin-bottom: 100px;
-  }
-
-  .phones-block, .socials-block {
-    width: 100%;
-    max-width: 400px;
-  }
-
-  .phone-item, .social-item {
-    width: 100%;
-  }
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 @media (max-width: 480px) {
+  .phone-item span,
+  .social-item span {
+    font-size: 0.9rem;
+  }
+
+  .phone-item,
+  .social-item {
+    padding: 3% 4%;
+    height: 8vh;
+    min-height: 45px;
+  }
+
+  .phone-item img,
+  .social-item img {
+    width: 12%;
+    min-width: 20px;
+  }
+
+  .phones-block,
+  .socials-block {
+    min-width: 100px;
+    max-width: 250px;
+  }
+
   .catalog-container {
-    padding: 0 10px;
-  }
-
-  .phones-block, .socials-block {
-    max-width: 100%;
-  }
-
-  .phone-item, .social-item {
-    flex-direction: row;
-    align-items: center;
-    height: auto;
-    padding: 12px;
-  }
-
-  .phone-item img, .social-item img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .phone-item span, .social-item span {
-    font-size: 16px;
+    gap: 2%;
+    padding: 2% 1%;
   }
 }
