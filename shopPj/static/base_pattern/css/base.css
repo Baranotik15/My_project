@@ -32,20 +32,6 @@ a:active {
     text-decoration: none;
 }
 
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
 .hud {
     position: fixed;
     top: 0;
@@ -106,18 +92,19 @@ button:hover {
 }
 
 .menu-table th {
-    background-color: #333333;
-    width: 25%;
-    color: #ffffff;
-    padding: 0;
-    font-size: 18px;
-    font-family: 'Bad Script', cursive;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: relative;
+    background-color: #333333 !important;
+    width: 25% !important;
+    color: #ffffff !important;
+    padding: 0 !important;
+    font-size: 18px !important;
+    font-family: 'Bad Script', cursive !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s !important;
+    position: relative !important;
 }
+
 
 .menu-table th a {
     display: flex;
@@ -152,10 +139,6 @@ button:hover {
     color: inherit;
 }
 
-.menu-table th {
-    padding: 0;
-}
-
 h1 {
     font-family: 'Great Vibes', cursive;
     color: #333333;
@@ -171,10 +154,6 @@ h1 {
     height: 80px;
     background-color: #f0f0f0;
     margin-top: 20px;
-}
-
-button:hover {
-    transform: scale(1.1);
 }
 
 .catalog {
