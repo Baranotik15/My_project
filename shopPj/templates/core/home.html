@@ -38,7 +38,7 @@
     </div>
 
     <div class="mail-right">
-      <form method="post" class="mail-form">
+      <form method="post" class="mail-form" onsubmit="event.preventDefault();">
         <input type="email" placeholder="Ваш E-mail" class="mail-input">
         <button type="submit" class="mail-button">Подписаться</button>
       </form>
@@ -67,19 +67,19 @@
 
     <div class="socials-block">
       <div class="social-item">
-        <a href="" target="_blank">
+        <a href="#" onclick="event.preventDefault();" target="_blank">
           <img src="{% static 'home_page/img/instagram.png' %}" alt="Instagram Icon">
           <span>Instagram</span>
         </a>
       </div>
       <div class="social-item">
-        <a href="" target="_blank">
+        <a href="#" onclick="event.preventDefault();" target="_blank">
           <img src="{% static 'home_page/img/Telegram.png' %}" alt="Telegram Icon">
           <span>Telegram</span>
         </a>
       </div>
       <div class="social-item">
-        <a href="" target="_blank">
+        <a href="#" onclick="event.preventDefault();" target="_blank">
           <img src="{% static 'home_page/img/tiktok.png' %}" alt="TikTok Icon">
           <span>TikTok</span>
         </a>
