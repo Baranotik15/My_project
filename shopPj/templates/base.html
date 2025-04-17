@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <title>Scissors</title>
   {% load static %}
-  <link rel="stylesheet" href="{% static "base_pattern/css/base.css" %}">
-  <link rel="stylesheet" href="{% static "about_page/css/about.css" %}">
-  <link rel="stylesheet" href="{% static "product/css/product_list.css" %}">
-  <link rel="stylesheet" href="{% static "product/css/product_detail.css" %}">
+  <link rel="stylesheet" href="{% static "core/css/base.css" %}">
+  <link rel="stylesheet" href="{% static "core/css/about.css" %}">
+  <link rel="stylesheet" href="{% static "core/css/pagination.css" %}">
+  <link rel="stylesheet" href="{% static "products/css/product_list.css" %}">
+  <link rel="stylesheet" href="{% static "products/css/product_detail.css" %}">
   <link rel="stylesheet" href="{% static "users/css/login.css" %}">
   <link rel="stylesheet" href="{% static "cart/css/view_cart.css" %}">
   <link rel="stylesheet" href="{% static "orders/css/checkout.css" %}">
   <link rel="stylesheet" href="{% static "orders/css/order_success.css" %}">
   <link rel="stylesheet" href="{% static "users/css/profile.css" %}">
-  <link rel="stylesheet" href="{% static "base_pattern/css/pagination.css" %}">
   <link rel="stylesheet" href="{% static "users/css/favorites.css" %}">
   {% block style %}{% endblock %}
 </head>
@@ -21,17 +21,17 @@
 <header>
   <div class="hud">
     <a href="{% url "main_page" %}">
-      <img src="{% static 'base_pattern/img/menu.png' %}" alt="Меню" class="icon">
+      <img src="{% static 'core/img/base_img/menu.png' %}" alt="Меню" class="icon">
     </a>
     <a href="{% url "profile" %}">
-      <img src="{% static 'base_pattern/img/profil.png' %}" alt="Профиль" class="icon">
+      <img src="{% static 'core/img/base_img/profil.png' %}" alt="Профиль" class="icon">
     </a>
     <span class="site-name">ScissorS</span>
     <a href="{% url "favorites" %}">
-      <img src="{% static 'base_pattern/img/like.png' %}" alt="Отслеживаемое" class="icon">
+      <img src="{% static 'core/img/base_img/like.png' %}" alt="Отслеживаемое" class="icon">
     </a>
     <a href="{% url "view_cart" %}">
-      <img src="{% static 'base_pattern/img/cart.png' %}" alt="Корзина" class="icon">
+      <img src="{% static 'core/img/base_img/cart.png' %}" alt="Корзина" class="icon">
     </a>
   </div>
 
