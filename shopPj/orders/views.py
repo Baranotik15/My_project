@@ -1,4 +1,3 @@
-import stripe
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
@@ -6,175 +5,86 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
+
 from orders.forms import OrderForm
-from orders.models import OrderItem
-from cart.models import Cart, CartItem
 from orders.models import Order
-
-
-stripe.api_key = settings.STRIPE_SECRET_KEY
+from orders.services.stripe_service import create_stripe_checkout_session, verify_stripe_payment
+from orders.services.cart_service import get_cart_and_items
+from orders.services.order_service import create_order_with_items
 
 
 @method_decorator(login_required, name="dispatch")
 class CheckoutView(View):
-    def _get_cart_and_items(self, user):
-        try:
-            cart = Cart.objects.get(user=user, is_active=True)
-            cart_items = CartItem.objects.filter(cart=cart)
-            if not cart_items.exists():
-                messages.warning(
-                    self.request,
-                    "Ваша корзина пуста. Добавьте товары, чтобы продолжить.",
-                )
-                return None, None, None
-            total_price = sum(item.product.price * item.quantity for item in cart_items)
-            return cart, cart_items, total_price
-        except Cart.DoesNotExist:
-            messages.warning(
-                self.request,
-                "У вас нет активной корзины. Добавьте товары, чтобы продолжить.",
-            )
-            return None, None, None
-
     def get(self, request, *args, **kwargs):
-        cart, cart_items, total_price = self._get_cart_and_items(request.user)
+        cart, cart_items, total_price = get_cart_and_items(request, request.user)
         if not cart:
             return redirect("view_cart")
 
         form = OrderForm(user=request.user)
-        context = {
+        return render(request, "orders/checkout.html", {
             "form": form,
             "total_price": total_price,
             "stripe_public_key": settings.STRIPE_PUBLIC_KEY,
-        }
-        return render(request, "orders/checkout.html", context)
+        })
 
     def post(self, request, *args, **kwargs):
-        cart, cart_items, total_price = self._get_cart_and_items(request.user)
+        cart, cart_items, total_price = get_cart_and_items(request, request.user)
         if not cart:
             return redirect("view_cart")
 
         form = OrderForm(request.POST, user=request.user)
         if form.is_valid():
             order = form.save()
-            for item in cart_items:
-                OrderItem.objects.create(
-                    order=order,
-                    product=item.product,
-                    quantity=item.quantity,
-                )
+            create_order_with_items(order, cart_items)
 
             cart.is_active = False
             cart.save()
 
-            payment_method = form.cleaned_data["payment_method"]
-            if payment_method == "stripe":
+            if form.cleaned_data["payment_method"] == "stripe":
                 try:
-                    session = stripe.checkout.Session.create(
-                        payment_method_types=["card"],
-                        line_items=[
-                            {
-                                "price_data": {
-                                    "currency": "usd",
-                                    "product_data": {
-                                        "name": f"Order {order.id}",
-                                    },
-                                    "unit_amount": int(total_price * 100),
-                                },
-                                "quantity": 1,
-                            }
-                        ],
-                        mode="payment",
-                        success_url=request.build_absolute_uri(
-                            reverse(
-                                "order_success",
-                                kwargs={"order_id": order.id}
-                            )
-                        ),
-                        cancel_url=request.build_absolute_uri(
-                            "/payment-cancel/"
-                        ),
-                        metadata={"order_id": order.id},
-                    )
-
+                    session = create_stripe_checkout_session(request, order, total_price)
                     order.stripe_session_id = session.id
                     order.save()
-
                     messages.success(request, "Переходите к оплате!")
                     return redirect(session.url, code=303)
-                except stripe.error.StripeError as e:
+                except Exception as e:
                     messages.error(request, f"Ошибка оплаты: {str(e)}")
                     return redirect("checkout")
-            else:
-                messages.success(
-                    request,
-                    "Заказ оформлен! Оплатите наличными при получении."
-                )
-                return redirect(
-                    reverse(
-                        "order_success",
-                        kwargs={"order_id": order.id}
-                    )
-                )
 
-        context = {
+            messages.success(request, "Заказ оформлен! Оплатите наличными при получении.")
+            return redirect(reverse("order_success", kwargs={"order_id": order.id}))
+
+        return render(request, "orders/checkout.html", {
             "form": form,
             "total_price": total_price,
             "stripe_public_key": settings.STRIPE_PUBLIC_KEY,
-        }
-        return render(
-            request,
-            "orders/checkout.html",
-            context
-        )
+        })
+
 
 @method_decorator(login_required, name="dispatch")
 class OrderSuccessView(View):
     def get(self, request, order_id, *args, **kwargs):
-        order = get_object_or_404(
-            Order,
-            id=order_id,
-            user=request.user
-        )
+        order = get_object_or_404(Order, id=order_id, user=request.user)
 
         if order.payment_method == "stripe" and order.stripe_session_id:
-            try:
-                session = stripe.checkout.Session.retrieve(order.stripe_session_id)
-                if not session.payment_intent:
-                    messages.error(request, "Оплата ещё не начата.")
-                    return redirect("view_cart")
-
-                payment_intent = stripe.PaymentIntent.retrieve(session.payment_intent)
-                if payment_intent.status != "succeeded" and order.status == Order.OrderStatus.PENDING:
-                    messages.error(request, "Оплата не была завершена.")
-                    return redirect("view_cart")
-
-                if not order.stripe_payment_intent:
-                    order.stripe_payment_intent = session.payment_intent
-                    order.save()
-
-            except stripe.error.StripeError as e:
-                messages.error(request, f"Ошибка проверки оплаты: {str(e)}")
+            payment_intent, error = verify_stripe_payment(order)
+            if error:
+                messages.error(request, error)
                 return redirect("view_cart")
+            if payment_intent and not order.stripe_payment_intent:
+                order.stripe_payment_intent = payment_intent.id
+                order.save()
 
         if order.status == Order.OrderStatus.PENDING:
             order.status = Order.OrderStatus.COMPLETED
             order.save()
 
-        order_items = order.order_items.all()
-        total_price = order.get_total_price()
-
-        context = {
+        return render(request, "orders/order_success.html", {
             "order": order,
-            "order_items": order_items,
-            "total_price": total_price,
-        }
+            "order_items": order.order_items.all(),
+            "total_price": order.get_total_price(),
+        })
 
-        return render(
-            request,
-            "orders/order_success.html",
-            context
-        )
 
 @method_decorator(login_required, name="dispatch")
 class PaymentCancelView(View):
