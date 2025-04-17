@@ -10,7 +10,16 @@ from orders.forms import OrderForm
 from orders.models import Order
 from orders.services.stripe_service import create_stripe_checkout_session, verify_stripe_payment
 from orders.services.cart_service import get_cart_and_items
-from orders.services.order_service import create_order_with_items
+from orders.models import OrderItem
+
+
+def create_order_with_items(order, cart_items):
+    for item in cart_items:
+        OrderItem.objects.create(
+            order=order,
+            product=item.product,
+            quantity=item.quantity,
+        )
 
 
 @method_decorator(login_required, name="dispatch")
