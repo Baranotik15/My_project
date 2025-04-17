@@ -3,12 +3,12 @@ from products.views import ProductListView, ProductDetailView
 
 urlpatterns = [
     path(
-        "category/<int:category_id>/",
+        "categories/<int:category_id>/",
         ProductListView.as_view(),
         name="product_list"
     ),
     path(
-        "product/<int:pk>/",
+        "products/<int:pk>/",
         ProductDetailView.as_view(),
         name="product_detail"
     ),

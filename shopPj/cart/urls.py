@@ -13,7 +13,7 @@ urlpatterns = [
         name="view_cart"
     ),
     path(
-        "delete/<int:pk>/",
+        "carts/<int:pk>/delete/",
         CartItemDeleteView.as_view(),
         name="delete_cart_item"
     ),

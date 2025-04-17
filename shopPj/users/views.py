@@ -10,13 +10,13 @@ from django.core.mail import EmailMessage
 from django.db import transaction
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
-from django.template.loader import render_to_string
 from django.utils.decorators import method_decorator
-from django.utils.encoding import force_bytes, force_str
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_str
+from django.utils.http import urlsafe_base64_decode
 from django.views import View
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from users.services.email_service import send_activation_email
 
 
 from users.services.token_service import account_activation_token
@@ -93,7 +93,6 @@ class ProfileView(View):
 class SignUpView(View):
     def get(self, request: HttpRequest) -> HttpResponse:
         form = CustomUserCreationForm()
-
         return render(request, "users/signup.html", {"form": form})
 
     def post(self, request: HttpRequest) -> HttpResponse:
@@ -108,28 +107,12 @@ class SignUpView(View):
                 user.is_active = False
                 user.save()
 
-                current_site = get_current_site(request)
-                mail_subject = "Activate your account."
-                message = render_to_string(
-                    "users/emails/acc_active_email.html",
-                    {
-                        "user": user,
-                        "domain": current_site.domain,
-                        "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-                        "token": account_activation_token.make_token(user),
-                    },
-                )
-                email = EmailMessage(mail_subject, message, to=[user.email])
-                email.content_subtype = "html"
+                send_activation_email(request, user)
 
-                threading.Thread(target=email.send).start()
         except Exception as e:
-            logging.error(f"Error sending email: {e}")
-
             return render(request, "users/signup.html", {"form": form})
 
         return render(request, "users/email_confirmation_sent.html")
-
 
 class ActivateAccountView(View):
     def get(self, request, uidb64, token):
