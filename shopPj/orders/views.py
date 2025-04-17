@@ -6,12 +6,14 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
-from .forms import OrderForm
-from .models import OrderItem
+from orders.forms import OrderForm
+from orders.models import OrderItem
 from cart.models import Cart, CartItem
 from orders.models import Order
 
+
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
 
 @method_decorator(login_required, name="dispatch")
 class CheckoutView(View):

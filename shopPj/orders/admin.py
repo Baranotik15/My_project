@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db.models import F, Sum
-from .models import Order, OrderItem
+from orders.models import Order, OrderItem
 
 
 @admin.register(Order)
