@@ -1,12 +1,10 @@
 import logging
-import threading
 
 from django.contrib import messages
 from django.contrib.auth import login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import EmailMessage
+from django.contrib.auth.views import LoginView
 from django.db import transaction
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
@@ -20,7 +18,7 @@ from users.services.email_service import send_activation_email
 
 
 from users.services.token_service import account_activation_token
-from users.forms import CustomUserCreationForm
+from users.forms import CustomUserCreationForm, CustomLoginForm
 from orders.models import Order
 from products.models import Product
 
@@ -88,6 +86,11 @@ class ProfileView(View):
                 "orders": orders_with_details,
             },
         )
+
+
+class CustomLoginView(LoginView):
+    authentication_form = CustomLoginForm
+    template_name = 'users/login.html'
 
 
 class SignUpView(View):

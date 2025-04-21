@@ -7,13 +7,14 @@ from users.views import (
     ProfileView,
     SignUpView,
     ActivateAccountView,
+    CustomLoginView,
 )
 
 
 urlpatterns = [
     path(
         "login/",
-        LoginView.as_view(template_name="users/login.html"),
+        CustomLoginView.as_view(template_name="users/login.html"),
         name="login"),
     path(
         "logout/",
