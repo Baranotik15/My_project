@@ -8,6 +8,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 def create_stripe_checkout_session(request, order, total_price):
     return stripe.checkout.Session.create(
         payment_method_types=["card"],
+        customer_email=request.user.email,
         line_items=[
             {
                 "price_data": {
