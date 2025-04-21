@@ -24,7 +24,7 @@
       <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <input type="hidden" name="next" value="{% url 'product_detail' products_detail.id %}">
-        <button type="submit" class="btn btn-buy">Купить</button>
+        <button type="submit" class="btn btn-buy">Добавить в корзину</button>
       </form>
     {% endif %}
 
