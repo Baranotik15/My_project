@@ -9,7 +9,7 @@ class OrderForm(forms.ModelForm):
         DELIVERY = "Delivery", "Delivery"
 
     class PaymentChoices(models.TextChoices):
-        STRIPE = "stripe", "Stripe"
+        STRIPE = "cart", "Cart"
         IN_CASH = "in_cash", "In Cash"
 
     stripe_token = forms.CharField(

@@ -11,7 +11,7 @@ def create_stripe_checkout_session(request, order, total_price):
         line_items=[
             {
                 "price_data": {
-                    "currency": "usd",
+                    "currency": "uah",
                     "product_data": {"name": f"Order {order.id}"},
                     "unit_amount": int(total_price * 100),
                 },

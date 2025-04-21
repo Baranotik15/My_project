@@ -33,7 +33,7 @@ class Order(models.Model):
         max_length=20,
         choices=[
             ("in_cash", "In Cash"),
-            ("stripe", "Stripe")
+            ("cart", "Cart")
         ],
     )
     delivery_address = models.CharField(

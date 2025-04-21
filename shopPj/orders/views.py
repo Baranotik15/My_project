@@ -49,7 +49,7 @@ class CheckoutView(View):
             cart.is_active = False
             cart.save()
 
-            if form.cleaned_data["payment_method"] == "stripe":
+            if form.cleaned_data["payment_method"] == "cart":
                 try:
                     session = create_stripe_checkout_session(request, order, total_price)
                     order.stripe_session_id = session.id
@@ -75,7 +75,7 @@ class OrderSuccessView(View):
     def get(self, request, order_id, *args, **kwargs):
         order = get_object_or_404(Order, id=order_id, user=request.user)
 
-        if order.payment_method == "stripe" and order.stripe_session_id:
+        if order.payment_method == "cart" and order.stripe_session_id:
             payment_intent, error = verify_stripe_payment(order)
             if error:
                 messages.error(request, error)
