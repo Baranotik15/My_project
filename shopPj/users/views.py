@@ -48,9 +48,12 @@ class RemoveFromFavoritesView(LoginRequiredMixin, View):
 
         if product in request.user.favorite_products.all():
             request.user.favorite_products.remove(product)
-            return redirect("favorites")
-        else:
-            return redirect("product_detail", pk=product.id)
+
+        next_url = request.POST.get('next') or request.GET.get('next')
+        if next_url:
+            return redirect(next_url)
+
+        return redirect("favorites")
 
 
 @method_decorator(login_required, name="dispatch")
